@@ -40,6 +40,16 @@ import Mindset from './product-images/mindset.webp';
 import ChanakyaInDailyLife from './product-images/chanakya-in-daily-life.webp';
 import Attached from './product-images/attached.webp';
 
+//CAROUSEL
+import CarouselFiction from './carousel/carousel-img-01.webp';
+import CarouselNonFiction from './carousel/carousel-img-02.webp';
+import CarouselAllProducts from './carousel/carousel-img-03.webp';
+
+//FEATURED
+import FictionFeatured from './featured/fiction-featured.svg';
+import NonFictionFeatured from './featured/non-fiction-featured.svg';
+import SelfHelp from './featured/self-help-featured.svg';
+
 export {
   //FICTION
   HarryPotterAndTheCursedChild,
@@ -80,4 +90,12 @@ export {
   Mindset,
   ChanakyaInDailyLife,
   Attached,
+  //CAROUSEL
+  CarouselFiction,
+  CarouselNonFiction,
+  CarouselAllProducts,
+  //FEATURED
+  FictionFeatured,
+  NonFictionFeatured,
+  SelfHelp,
 };

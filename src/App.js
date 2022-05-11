@@ -1,11 +1,14 @@
-import './App.css';
+import './App.scss';
 import { products } from './backend/db/products';
+import { Navbar, CarouselComponent, Featured } from './components';
 
 function App() {
   console.log(products);
   return (
     <div className='App'>
-      <div>Working</div>
+      <Navbar />
+      <CarouselComponent />
+      <Featured />
     </div>
   );
 }
