@@ -1,0 +1,16 @@
+.navbar {
+  .navbar-search {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-grey);
+
+    input {
+      border: none;
+      background-color: var(--bg-grey);
+    }
+    i {
+      padding: 10px 10px;
+      background-color: var(--bg-grey);
+    }
+  }
+}

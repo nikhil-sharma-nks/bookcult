@@ -1,0 +1,8 @@
+.collections {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  .featured-collection {
+    width: 25%;
+  }
+}
