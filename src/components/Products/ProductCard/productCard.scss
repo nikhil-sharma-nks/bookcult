@@ -1,0 +1,37 @@
+.vertical-card {
+  padding: 1rem;
+  width: 18rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+  height: fit-content;
+}
+.vertical-card:hover {
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border: 1px solid var(--black);
+  /* border: 1px solid red; */
+}
+
+.vertical-card .image-container .pic {
+  object-fit: contain;
+  height: 20rem;
+}
+.vertical-card .card-info .button-container {
+  justify-content: center;
+}
+.vertical-card .card-info .button-container .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.vertical-card .card-info {
+  padding: unset;
+}
+.vertical-card .card-info .card-header {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.3rem;
+}

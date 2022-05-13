@@ -1,14 +1,14 @@
 import './App.scss';
 import { products } from './backend/db/products';
-import { Navbar, CarouselComponent, Featured } from './components';
+import { Navbar } from './components';
+import RoutesContainer from './routes/RoutesContainer';
 
 function App() {
   console.log(products);
   return (
     <div className='App'>
       <Navbar />
-      <CarouselComponent />
-      <Featured />
+      <RoutesContainer />
     </div>
   );
 }

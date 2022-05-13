@@ -1,0 +1,6 @@
+.product-listing {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  min-height: 100vh;
+  width: 100%;
+}

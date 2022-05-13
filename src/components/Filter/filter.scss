@@ -1,0 +1,26 @@
+.filter-container {
+  grid-column: 1 / span 2;
+  width: 100%;
+  padding: 2rem;
+  overflow: auto;
+  height: calc(100vh - 4rem);
+  position: sticky;
+  top: 4rem;
+
+  .filter-clear-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .price-range-container {
+    .price-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    input {
+      width: 100%;
+    }
+  }
+}
