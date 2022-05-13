@@ -1,16 +1,29 @@
-.navbar {
-  .navbar-search {
-    display: flex;
-    align-items: center;
-    background-color: var(--bg-grey);
-
-    input {
-      border: none;
-      background-color: var(--bg-grey);
+.navigationbar-container {
+  position: sticky;
+  top: 0;
+  .navbar {
+    .product-link {
+      margin-left: 2rem;
+      letter-spacing: 0.2rem;
+      font-weight: bold;
+      font-size: larger;
     }
-    i {
-      padding: 10px 10px;
+    .product-link:hover {
+      color: var(--primary-color);
+    }
+    .navbar-search {
+      display: flex;
+      align-items: center;
       background-color: var(--bg-grey);
+
+      input {
+        border: none;
+        background-color: var(--bg-grey);
+      }
+      i {
+        padding: 10px 10px;
+        background-color: var(--bg-grey);
+      }
     }
   }
 }
