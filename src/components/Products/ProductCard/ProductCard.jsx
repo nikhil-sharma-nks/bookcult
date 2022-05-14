@@ -9,13 +9,13 @@ const ProductCard = ({
   discountedPrice,
   discountedAmount,
   discountedPercentage,
+  tag,
 }) => {
-  console.log(title);
   return (
     <div className='card vertical-card pos-rel'>
       <div className='image-container'>
         <img className='pic' src={img} alt='' />
-        <div className='card-tag'>Bestseller</div>
+        {tag ? <div className='card-tag'>{tag}</div> : ''}
       </div>
       <div className='card-info'>
         <div className='card-header'>{title}</div>

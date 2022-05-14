@@ -1,13 +1,14 @@
 import React from 'react';
 import { ProductCard } from '../..';
-import { products } from '../../../backend/db/products';
 import './productContainer.scss';
+import { useProduct } from '../../../context/ProductContext';
 
 const ProductsContainer = () => {
-  console.log(products);
+  const { productState } = useProduct();
+
   return (
     <div className='products-container my-4'>
-      {products.map((product) => (
+      {productState?.products?.map((product) => (
         <ProductCard {...product} />
       ))}
     </div>

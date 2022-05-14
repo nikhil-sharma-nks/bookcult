@@ -11,6 +11,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .clear-button {
+      cursor: pointer;
+    }
+    .clear-button:hover {
+      color: var(--primary-color);
+      border-bottom: 1px solid var(--black);
+    }
   }
 
   .price-range-container {
