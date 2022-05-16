@@ -1,1 +1,5 @@
-export { ProductProvider, useProduct } from './ProductContext';
+export {
+  ProductProvider,
+  useProduct,
+  InitialProductState,
+} from './ProductContext';

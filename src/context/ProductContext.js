@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
-import axios from 'axios';
 import ProductReducer from '../reducers/ProductReducer';
 
 const ProductContext = createContext();
@@ -12,8 +11,9 @@ const InitialProductState = {
   wishlist: [],
   products: [],
   sortBy: '',
-  price: 100,
+  price: 1000,
   rating: '',
+  searchQuery: '',
 };
 
 const ProductProvider = ({ children }) => {
@@ -22,41 +22,6 @@ const ProductProvider = ({ children }) => {
     InitialProductState
   );
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const {
-          data: { products },
-        } = await axios.get('/api/products');
-        productDispatch({
-          type: 'LOAD_PRODUCTS',
-          payload: products,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-      try {
-        const {
-          data: { categories },
-        } = await axios.get('/api/categories');
-
-        const categoryPayload = categories.reduce(
-          (previousCategory, currentCategory) => ({
-            ...previousCategory,
-            [currentCategory.categoryName]: false,
-          }),
-          {}
-        );
-        productDispatch({
-          type: 'LOAD_CATEGORIES',
-          payload: categoryPayload,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
-
   return (
     <ProductContext.Provider value={{ productState, productDispatch }}>
       {children}
@@ -64,4 +29,4 @@ const ProductProvider = ({ children }) => {
   );
 };
 
-export { ProductProvider, useProduct };
+export { ProductProvider, useProduct, InitialProductState };
