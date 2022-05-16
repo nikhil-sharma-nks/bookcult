@@ -1,8 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useProduct } from '../../context';
 import './navbar.scss';
 
 const Navbar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { productState, productDispatch } = useProduct();
+  const { searchQuery } = productState;
+  const handleFocus = () => {
+    if (location.pathname === '/') {
+      navigate('/products');
+    }
+  };
+  const handleChange = (e) => {
+    productDispatch({
+      type: 'SEARCH_QUERY',
+      payload: e.target.value,
+    });
+  };
   return (
     <div className='navigationbar-container'>
       <div className='navbar'>
@@ -20,7 +36,19 @@ const Navbar = () => {
             type='text'
             className='form-control'
             placeholder='Search Products Here'
+            value={searchQuery}
+            onChange={handleChange}
+            onFocus={handleFocus}
           />
+          <i
+            class='fa-solid fa-xmark search-cancel'
+            onClick={() =>
+              productDispatch({
+                type: 'SEARCH_QUERY',
+                payload: '',
+              })
+            }
+          ></i>
         </div>
         <div className='navigation-buttons'>
           <Link to='/'>
