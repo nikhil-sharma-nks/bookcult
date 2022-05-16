@@ -24,19 +24,20 @@ const Filter = () => {
       </div>
       <div className='price-range-container mt-4'>
         <p className='text-l'>Price</p>
-        <div className='price-container'>
-          <p>100</p>
-          <p>500</p>
-          <p>1000</p>
-        </div>
         <input
           type='range'
           min='100'
           max='1000'
           step='20'
+          list='price-range'
           onChange={(e) => handleChange('PRICE', e.target.value)}
           value={parseInt(productState.price)}
         />
+        <datalist className='price-container' id='price-range'>
+          <option value='100' label='₹100'></option>
+          <option value='500' label='₹500'></option>
+          <option value='1000' label='₹1000'></option>
+        </datalist>
       </div>
       <div className='category-container mt-4'>
         <p className='text-l'>Category</p>
