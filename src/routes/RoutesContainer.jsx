@@ -8,6 +8,7 @@ const RoutesContainer = () => {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/products' element={<ProductListing />} />
+      <Route path='/products/:categoryName' element={<ProductListing />} />
       <Route path='/mock' element={<Mockman />} />
     </Routes>
   );
