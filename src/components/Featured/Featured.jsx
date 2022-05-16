@@ -24,8 +24,9 @@ const Featured = () => {
     <div className='mb-4'>
       <div className='h1 m-4 text-centered'>Featured Categories</div>
       <div className='collections'>
-        {featuredCollections.map((item) => (
+        {featuredCollections.map((item, index) => (
           <img
+            key={index}
             className='featured-collection'
             src={item.img}
             alt='Featured Item'
