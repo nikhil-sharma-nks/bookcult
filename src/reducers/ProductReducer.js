@@ -37,6 +37,12 @@ const ProductReducer = (state, action) => {
         sortBy: payload,
       };
     }
+    case 'SEARCH_QUERY': {
+      return {
+        ...state,
+        searchQuery: payload,
+      };
+    }
     case 'CLEAR': {
       for (const category in state.categories)
         state.categories[category] = false;
@@ -46,8 +52,9 @@ const ProductReducer = (state, action) => {
         wishlist: [],
         products: state.products,
         sortBy: '',
-        price: 100,
+        price: 1000,
         rating: '',
+        searchQuery: '',
       };
     }
     default:
