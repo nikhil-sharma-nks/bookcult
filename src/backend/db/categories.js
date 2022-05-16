@@ -21,4 +21,9 @@ export const categories = [
     categoryName: 'self-help',
     imgAltText: 'self-help category banner',
   },
+  {
+    _id: uuid(),
+    categoryName: 'biography',
+    imgAltText: 'biography category banner',
+  },
 ];
