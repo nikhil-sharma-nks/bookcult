@@ -8,15 +8,15 @@ const Featured = () => {
   const featuredCollections = [
     {
       img: FictionFeatured,
-      url: '/category/fiction',
+      url: '/products/fiction',
     },
     {
       img: NonFictionFeatured,
-      url: '/category/non-fiction',
+      url: '/products/non-fiction',
     },
     {
       img: SelfHelp,
-      url: '/category/self-help',
+      url: '/products/self-help',
     },
   ];
   const handleFeaturedClick = (url) => navigate(url);
