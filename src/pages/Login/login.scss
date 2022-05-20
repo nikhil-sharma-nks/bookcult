@@ -1,0 +1,17 @@
+.login-page-container button {
+  width: 100%;
+}
+
+.login-page-container .form-options-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-page-container a {
+  color: var(--primary-color);
+}
+
+.login-page-container {
+  margin: 4rem auto;
+  width: fit-content;
+}
