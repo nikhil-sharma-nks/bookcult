@@ -36,5 +36,40 @@
         border-bottom: 1px solid var(--primary-color);
       }
     }
+    .navigation-buttons {
+      .avatar-circular {
+        height: 2rem;
+        width: 2rem;
+        font-size: 1rem;
+      }
+      .dropdown {
+        display: inline-block;
+        position: relative;
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          left: -1rem;
+          width: 5rem;
+          overflow: auto;
+          box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+          color: var(--black);
+          div {
+            padding: 5px;
+            left: -2rem;
+            background-color: var(--white);
+            cursor: pointer;
+          }
+          div:hover {
+            background-color: var(--bg-grey);
+          }
+        }
+      }
+      .dropdown:hover {
+        .dropdown-content {
+          display: block;
+          z-index: 5;
+        }
+      }
+    }
   }
 }
