@@ -4,7 +4,6 @@ import { useProduct } from '../../context';
 
 const Filter = () => {
   const { productState, productDispatch } = useProduct();
-  console.log({ productState });
   const { categories } = productState;
   const handleChange = (actionType, payload, isChecked) => {
     const finalPayload =
@@ -41,10 +40,10 @@ const Filter = () => {
       </div>
       <div className='category-container mt-4'>
         <p className='text-l'>Category</p>
-        {Object.entries(categories).map((categoryItem) => {
+        {Object.entries(categories).map((categoryItem, index) => {
           const [categoryName, isSelected] = categoryItem;
           return (
-            <div className='mt-2'>
+            <div className='mt-2' key={index}>
               <input
                 type='checkbox'
                 id={categoryName}
@@ -127,7 +126,7 @@ const Filter = () => {
             onChange={() => handleChange('SORT_BY', 'LOW_TO_HIGH')}
             checked={productState.sortBy === 'LOW_TO_HIGH'}
           />
-          <label className='ml-1' for='LOW_TO_HIGH'>
+          <label className='ml-1' htmlFor='LOW_TO_HIGH'>
             Price - Low To High
           </label>
         </div>
@@ -140,7 +139,7 @@ const Filter = () => {
             onChange={() => handleChange('SORT_BY', 'HIGH_TO_LOW')}
             checked={productState.sortBy === 'HIGH_TO_LOW'}
           />
-          <label className='ml-1' for='HIGH_TO_LOW'>
+          <label className='ml-1' htmlFor='HIGH_TO_LOW'>
             Price - High To Low
           </label>
         </div>
@@ -153,7 +152,7 @@ const Filter = () => {
             onChange={() => handleChange('SORT_BY', 'NEWEST_FIRST')}
             checked={productState.sortBy === 'NEWEST_FIRST'}
           />
-          <label className='ml-1' for='NEWEST_FIRST'>
+          <label className='ml-1' htmlFor='NEWEST_FIRST'>
             Newest First
           </label>
         </div>
@@ -166,7 +165,7 @@ const Filter = () => {
             onChange={() => handleChange('SORT_BY', 'POPULARITY')}
             checked={productState.sortBy === 'POPULARITY'}
           />
-          <label className='ml-1' for='POPULARITY'>
+          <label className='ml-1' htmlFor='POPULARITY'>
             Popularity
           </label>
         </div>
