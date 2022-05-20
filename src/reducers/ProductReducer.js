@@ -43,6 +43,28 @@ const ProductReducer = (state, action) => {
         searchQuery: payload,
       };
     }
+    case 'ADD_TO_WISHLIST':
+      return {
+        ...state,
+        wishlist: payload,
+      };
+    case 'ADD_TO_CART':
+      return {
+        ...state,
+        cart: payload,
+      };
+    case 'LOGOUT': {
+      return {
+        categories: {},
+        cart: [],
+        wishlist: [],
+        products: [],
+        sortBy: '',
+        price: 1000,
+        rating: '',
+        searchQuery: '',
+      };
+    }
     case 'CLEAR': {
       for (const category in state.categories)
         state.categories[category] = false;
@@ -61,4 +83,4 @@ const ProductReducer = (state, action) => {
       return state;
   }
 };
-export default ProductReducer;
+export { ProductReducer };
