@@ -7,7 +7,7 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
-      <ToastContainer />
+      <ToastContainer style={{ top: '5rem' }} />
       <RoutesContainer />
     </div>
   );
