@@ -73,7 +73,6 @@ const getUserWishlist = async () => {
 
 const addToWishlist = async (product) => {
   let token = JSON.parse(localStorage.getItem('token'));
-  console.log({ token, product });
   const addToWishlistBaseUrl = '/api/user/wishlist';
   try {
     const {
