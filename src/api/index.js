@@ -5,6 +5,8 @@ export {
   getUserWishlist,
   addToWishlist,
   removeFromWishlist,
+  removeFromCart,
+  updateCartQuantity,
 } from './cartWishlist';
 
 export { getProducts, getCategories } from './productService';
