@@ -65,10 +65,13 @@ const ProductsContainer = () => {
   return (
     <>
       <div className='products-container my-4'>
-        {loading && <Spinner />}
-        {uniqueProducts?.map((product) => (
-          <ProductCard product={product} key={product._id} />
-        ))}
+        {loading ? (
+          <Spinner />
+        ) : (
+          uniqueProducts?.map((product) => (
+            <ProductCard product={product} key={product._id} />
+          ))
+        )}
       </div>
     </>
   );
