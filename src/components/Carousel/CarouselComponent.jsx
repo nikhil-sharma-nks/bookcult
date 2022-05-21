@@ -12,11 +12,11 @@ const CarouselComponent = () => {
   const carousel = [
     {
       img: CarouselFiction,
-      url: '/category/fiction',
+      url: '/products/fiction',
     },
     {
       img: CarouselNonFiction,
-      url: '/category/non-fiction',
+      url: '/products/non-fiction',
     },
     {
       img: CarouselAllProducts,
