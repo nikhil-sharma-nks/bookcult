@@ -17,6 +17,7 @@ const ProductCard = ({ product }) => {
     discountedPercentage,
     tag,
     rating,
+    _id,
   } = product;
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [isProductInWishlist, setIsProductInWishlist] = useState(false);
@@ -24,10 +25,8 @@ const ProductCard = ({ product }) => {
   const { authState } = useAuth();
 
   useEffect(() => {
-    setIsProductInCart(checkIfItemInCart(title, productState?.cart));
-    setIsProductInWishlist(
-      checkIfItemInWishlist(title, productState?.wishlist)
-    );
+    setIsProductInCart(checkIfItemInCart(_id, productState?.cart));
+    setIsProductInWishlist(checkIfItemInWishlist(_id, productState?.wishlist));
   }, [productState]);
 
   const handleProductClick = async () => {
@@ -48,6 +47,8 @@ const ProductCard = ({ product }) => {
         makeToast('Failed Add to Cart', 'error');
         console.log(error);
       }
+    } else {
+      navigate('/cart');
     }
   };
 
