@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useProduct, useAuth } from '../../context';
 import './navbar.scss';
 import { makeToast } from '../../components';
+import { getTotalCartItem } from '../../utils';
 
 const Navbar = () => {
   const location = useLocation();
@@ -65,7 +66,7 @@ const Navbar = () => {
             <div className='badge-container'>
               <i className='fas fa-shopping-cart'></i>
               <span className='badge badge-icon'>
-                {productState.cart ? productState.cart.length : '0'}
+                {productState.cart ? getTotalCartItem(productState.cart) : '0'}
               </span>
             </div>
           </Link>
