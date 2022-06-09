@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
 import { loginUser } from '../../api';
@@ -9,16 +9,23 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { authDispatch } = useAuth();
+  const { authState, authDispatch } = useAuth();
   const { productDispatch } = useProduct();
   const [loginInput, setLoginInput] = useState({
     email: '',
     password: '',
   });
   const testCredentials = {
-    email: 'adarshbalika@gmail.com',
-    password: 'adarshbalika',
+    email: 'nikhil.harsh.sharma@gmail.com',
+    password: '123',
   };
+
+  useEffect(() => {
+    if (authState.isAuth) {
+      makeToast('You Are Already Logged In', 'success');
+      navigate('/products');
+    }
+  }, []);
 
   const loginHandler = async (event, loginInput) => {
     event.preventDefault();
