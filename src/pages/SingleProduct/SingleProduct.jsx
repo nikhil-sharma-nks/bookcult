@@ -21,8 +21,6 @@ const SingleProduct = () => {
   const { productId } = useParams();
 
   useEffect(() => {
-    console.log({ productState });
-    console.log({ productId });
     setIsLoading(true);
     const foundProduct = productState.products.find(
       (item) => item._id === productId
@@ -34,7 +32,6 @@ const SingleProduct = () => {
       );
       setProduct(foundProduct);
     }
-    console.log({ foundProduct });
     setIsLoading(false);
   }, [productState]);
 
@@ -106,10 +103,10 @@ const SingleProduct = () => {
               </div>
               <div className='product-info'>
                 <div className='product-name'>
-                  <p className='product-title color-primary text-xxl'>
+                  <p className='color-primary text-xxl product-title'>
                     {product.title}
                   </p>
-                  <p className='product-author-name text-l color-grey'>
+                  <p className='text-l color-grey product-author-name'>
                     {product.author}
                   </p>
                 </div>

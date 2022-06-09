@@ -22,7 +22,9 @@ const Featured = () => {
   const handleFeaturedClick = (url) => navigate(url);
   return (
     <div className='mb-4'>
-      <div className='h1 m-4 text-centered'>Featured Categories</div>
+      <div className='h1 m-4 text-centered featured-heading'>
+        Featured Categories
+      </div>
       <div className='collections'>
         {featuredCollections.map((item, index) => (
           <img

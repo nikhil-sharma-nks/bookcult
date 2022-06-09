@@ -34,6 +34,7 @@ const CarouselComponent = () => {
       showThumbs={false}
       swipeable
       onClickItem={handleClick}
+      dynamicHeight={true}
     >
       {carousel.map((carouselItem, index) => (
         <img src={carouselItem.img} alt='Carousel' key={index} />

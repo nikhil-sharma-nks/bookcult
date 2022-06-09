@@ -14,6 +14,7 @@ const InitialProductState = {
   price: 1000,
   rating: '',
   searchQuery: '',
+  isMobileViewOpen: false,
 };
 
 const ProductProvider = ({ children }) => {

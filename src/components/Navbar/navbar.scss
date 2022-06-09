@@ -45,6 +45,9 @@
       .theme-container {
         cursor: pointer;
       }
+      .menu-hamburg {
+        display: none;
+      }
       .avatar-circular {
         height: 2rem;
         width: 2rem;
@@ -76,6 +79,40 @@
         .dropdown-content {
           display: block;
           z-index: 5;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .navigationbar-container {
+    height: fit-content;
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      .navbar-header {
+        width: 100vw;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        .main-title {
+          font-size: 1.5rem;
+        }
+        .product-link {
+          margin-left: 0;
+        }
+      }
+
+      .navbar-search {
+        display: none;
+      }
+      .navigation-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .menu-hamburg {
+          display: block;
         }
       }
     }

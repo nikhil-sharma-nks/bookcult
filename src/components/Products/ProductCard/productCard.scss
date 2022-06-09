@@ -86,3 +86,14 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .vertical-card {
+    .image-container {
+      .pic {
+        object-fit: contain;
+        height: 15rem;
+      }
+    }
+  }
+}

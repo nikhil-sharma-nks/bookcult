@@ -32,12 +32,19 @@ const Navbar = () => {
       payload: e.target.value,
     });
   };
+  const toggleMenuClick = () => {
+    productDispatch({
+      type: 'TOGGLE_MENU',
+    });
+  };
+  const { isMobileViewOpen } = productState;
+
   return (
     <div className='navigationbar-container'>
       <div className='navbar'>
         <Link to='/'>
           <div className='navbar-header'>
-            <div className='h2'>BookCult</div>
+            <div className='h2 main-title'>BookCult</div>
             <Link to='/products' className='product-link'>
               Products
             </Link>
@@ -64,6 +71,13 @@ const Navbar = () => {
           ></i>
         </div>
         <div className='navigation-buttons'>
+          {location.pathname.includes('products') ? (
+            <i
+              className='fa-solid fa-bars menu-hamburg '
+              onClick={toggleMenuClick}
+            ></i>
+          ) : null}
+
           <div className='theme-container' onClick={toggleTheme}>
             {theme === 'light' ? (
               <i className='fa-regular fa-moon'></i>
