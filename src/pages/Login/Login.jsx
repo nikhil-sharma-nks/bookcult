@@ -70,69 +70,71 @@ const Login = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className='login-page-container centered-container'>
-          <form
-            className='form-group'
-            onSubmit={(event) => loginHandler(event, loginInput)}
-          >
-            <p className='text-xxl text-centered color-primary'>Login</p>
-            <label htmlFor='login_email' className='form-label'>
-              Email address
-            </label>
-            <input
-              type='email'
-              name='email'
-              className='form-control'
-              id='login_email'
-              placeholder='Enter your email'
-              onChange={handleChange}
-              value={loginInput.email}
-            />
-            <label htmlFor='login_password' className='form-label'>
-              Password
-            </label>
-            <input
-              type='password'
-              name='password'
-              className='form-control'
-              id='login_password'
-              placeholder='Enter your password'
-              onChange={handleChange}
-              value={loginInput.password}
-            />
-
-            <div className='form-options-container mt-4'>
-              <div>
-                <input
-                  type='checkbox'
-                  id='rememberMe'
-                  name='rememberMe'
-                  value='newsletter'
-                />
-                <label className='ml-1' for='rememberMe'>
-                  Remember Me
-                </label>
-              </div>
-              <div>
-                <div>Forget Password</div>
-              </div>
-            </div>
-            <button className='btn btn-primary mt-3' type='submit'>
-              Login
-            </button>
-            <button
-              className='btn btn-primary-outlined mt-3'
-              type='submit'
-              onClick={(event) => selectTestCredentials(event)}
+        <div className='auth-page'>
+          <div className='login-page-container-bookcult'>
+            <form
+              className='form-group'
+              onSubmit={(event) => loginHandler(event, loginInput)}
             >
-              Login With Test Credentials
-            </button>
-            <div className='mt-3 text-centered'>
-              <Link to='/signup' className='sign-up-link'>
-                Don't Have An Account? Create one!
-              </Link>
-            </div>
-          </form>
+              <p className='text-xxl text-centered color-primary'>Login</p>
+              <label htmlFor='login_email' className='form-label'>
+                Email address
+              </label>
+              <input
+                type='email'
+                name='email'
+                className='form-control'
+                id='login_email'
+                placeholder='Enter your email'
+                onChange={handleChange}
+                value={loginInput.email}
+              />
+              <label htmlFor='login_password' className='form-label'>
+                Password
+              </label>
+              <input
+                type='password'
+                name='password'
+                className='form-control'
+                id='login_password'
+                placeholder='Enter your password'
+                onChange={handleChange}
+                value={loginInput.password}
+              />
+
+              <div className='form-options-container mt-4'>
+                <div>
+                  <input
+                    type='checkbox'
+                    id='rememberMe'
+                    name='rememberMe'
+                    value='newsletter'
+                  />
+                  <label className='ml-1' htmlFor='rememberMe'>
+                    Remember Me
+                  </label>
+                </div>
+                <div>
+                  <div>Forget Password</div>
+                </div>
+              </div>
+              <button className='btn btn-primary mt-3' type='submit'>
+                Login
+              </button>
+              <button
+                className='btn btn-primary-outlined mt-3'
+                type='submit'
+                onClick={(event) => selectTestCredentials(event)}
+              >
+                Login With Test Credentials
+              </button>
+              <div className='mt-3 text-centered'>
+                <Link to='/signup' className='sign-up-link'>
+                  Don't Have An Account? Create one!
+                </Link>
+              </div>
+            </form>
+          </div>
         </div>
       )}
     </>

@@ -1,10 +1,13 @@
 import React from 'react';
 import { CarouselComponent, Featured } from '../../components';
+import './home.scss';
 const Home = () => {
   return (
     <>
-      <CarouselComponent />
-      <Featured />
+      <div className='home-page pb-5 theme-body-background'>
+        <CarouselComponent />
+        <Featured />
+      </div>
     </>
   );
 };

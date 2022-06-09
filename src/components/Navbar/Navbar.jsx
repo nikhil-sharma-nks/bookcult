@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useProduct, useAuth } from '../../context';
+import { useProduct, useAuth, useTheme } from '../../context';
 import './navbar.scss';
 import { makeToast } from '../../components';
 import { getTotalCartItem } from '../../utils';
@@ -11,6 +11,8 @@ const Navbar = () => {
   const { productState, productDispatch } = useProduct();
   const { authState, authDispatch } = useAuth();
   const { searchQuery } = productState;
+  const { theme, toggleTheme } = useTheme();
+
   const handleLogout = () => {
     makeToast('You Are Now Logged Out', 'success');
     authDispatch({
@@ -62,6 +64,13 @@ const Navbar = () => {
           ></i>
         </div>
         <div className='navigation-buttons'>
+          <div className='theme-container' onClick={toggleTheme}>
+            {theme === 'light' ? (
+              <i className='fa-regular fa-moon'></i>
+            ) : (
+              <i className='fa-solid fa-sun'></i>
+            )}
+          </div>
           <Link to='/cart'>
             <div className='badge-container'>
               <i className='fas fa-shopping-cart'></i>

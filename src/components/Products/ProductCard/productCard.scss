@@ -5,6 +5,8 @@
   border: 1px solid transparent;
   transition: all 0.3s ease-in-out;
   height: fit-content;
+  color: var(--text-color);
+  background-color: var(--body-background-color);
   .image-container {
     .pic {
       object-fit: contain;

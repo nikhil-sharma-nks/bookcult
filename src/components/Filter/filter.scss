@@ -6,7 +6,8 @@
   height: calc(100vh - 4rem);
   position: sticky;
   top: 4rem;
-
+  color: var(--text-color);
+  background-color: var(--background-color);
   .filter-clear-container {
     display: flex;
     align-items: center;
