@@ -1,6 +1,5 @@
 import React from 'react';
 import { CarouselComponent, Featured } from '../../components';
-import './home.scss';
 const Home = () => {
   return (
     <>
