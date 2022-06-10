@@ -1,11 +1,16 @@
-import './App.css';
-import { products } from './backend/db/products';
+import './App.scss';
+import { Navbar } from './components';
+import RoutesContainer from './routes/RoutesContainer';
+import { useTheme } from './context';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
-  console.log(products);
+  const { theme } = useTheme();
   return (
-    <div className='App'>
-      <div>Working</div>
+    <div className={`App theme-${theme}`}>
+      <Navbar />
+      <ToastContainer style={{ top: '5rem' }} />
+      <RoutesContainer />
     </div>
   );
 }

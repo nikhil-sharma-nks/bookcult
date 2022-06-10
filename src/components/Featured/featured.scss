@@ -1,0 +1,14 @@
+.collections {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  .featured-collection {
+    width: 25%;
+  }
+}
+
+@media (max-width: 700px) {
+  .featured-heading {
+    font-size: 1.5rem;
+  }
+}

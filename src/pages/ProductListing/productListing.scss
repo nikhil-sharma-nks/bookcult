@@ -1,0 +1,20 @@
+.product-listing {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.mobile-filter {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .product-listing {
+    display: flex;
+    flex-direction: column;
+    .mobile-filter {
+      display: block;
+    }
+  }
+}

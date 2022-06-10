@@ -1,0 +1,99 @@
+.vertical-card {
+  padding: 1rem;
+  width: 18rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+  height: fit-content;
+  color: var(--text-color);
+  background-color: var(--body-background-color);
+  .image-container {
+    .pic {
+      object-fit: contain;
+      height: 20rem;
+    }
+    .wishlist {
+      position: absolute;
+      color: lightgrey;
+      // color: white;
+      padding: 10px;
+      border: 1px solid black;
+      border-radius: 50%;
+      z-index: 2;
+      left: 14.5rem;
+      top: 10px;
+      background-color: white;
+    }
+    .wishlist:hover {
+      background-color: rgb(245, 212, 212);
+
+      color: red;
+      border: 1px solid red;
+    }
+
+    .wishlist-selected {
+      background-color: rgb(245, 212, 212);
+
+      color: red;
+      border: 1px solid red;
+    }
+  }
+  .card-info {
+    padding: unset;
+    .button-container {
+      justify-content: center;
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    .card-header {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 1.3rem;
+      transition: all 0.3s ease-in-out;
+    }
+    .card-descripion {
+      display: flex;
+      justify-content: space-between;
+
+      .rating {
+        background-color: rgb(250, 250, 175);
+        padding: 0 10px;
+        border-radius: 5px;
+        border: 1px solid var(--warning);
+        font-weight: bold;
+        .star-rating {
+          color: var(--warning);
+        }
+      }
+    }
+  }
+}
+.vertical-card:hover {
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border: 1px solid var(--black);
+  // background-color: #e3e3ec;
+  .card-header {
+    color: var(--primary-color);
+    .card-descripion {
+      .author-name {
+        color: var(--primary-color);
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .vertical-card {
+    .image-container {
+      .pic {
+        object-fit: contain;
+        height: 15rem;
+      }
+    }
+  }
+}
