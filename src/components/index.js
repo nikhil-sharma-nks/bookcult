@@ -4,3 +4,6 @@ export { Featured } from './Featured/Featured';
 export { ProductCard } from './Products/ProductCard/ProductCard';
 export { ProductsContainer } from './Products/ProductContainer/ProductsContainer';
 export { Filter } from './Filter/Filter';
+export { makeToast } from './Toast/makeToast';
+export { Spinner } from './Spinner/Spinner';
+export { CartItem } from './CartItem/CartItem';

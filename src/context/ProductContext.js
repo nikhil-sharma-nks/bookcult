@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
-import ProductReducer from '../reducers/ProductReducer';
+import { ProductReducer } from '../reducers';
 
 const ProductContext = createContext();
 
@@ -14,6 +14,7 @@ const InitialProductState = {
   price: 1000,
   rating: '',
   searchQuery: '',
+  isMobileViewOpen: false,
 };
 
 const ProductProvider = ({ children }) => {

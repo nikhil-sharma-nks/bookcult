@@ -12,11 +12,11 @@ const CarouselComponent = () => {
   const carousel = [
     {
       img: CarouselFiction,
-      url: '/category/fiction',
+      url: '/products/fiction',
     },
     {
       img: CarouselNonFiction,
-      url: '/category/non-fiction',
+      url: '/products/non-fiction',
     },
     {
       img: CarouselAllProducts,
@@ -34,6 +34,7 @@ const CarouselComponent = () => {
       showThumbs={false}
       swipeable
       onClickItem={handleClick}
+      dynamicHeight={true}
     >
       {carousel.map((carouselItem, index) => (
         <img src={carouselItem.img} alt='Carousel' key={index} />

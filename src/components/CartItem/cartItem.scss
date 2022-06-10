@@ -1,0 +1,87 @@
+.horizontal-card {
+  width: fit-content;
+  width: 60%;
+}
+.horizontal-card:hover {
+  cursor: pointer;
+}
+
+.horizontal-card .image-container .pic {
+  object-fit: contain;
+  /* width: 15rem; */
+  width: fit-content;
+  padding: 1rem;
+}
+
+.horizontal-card .card-info {
+  padding: 1rem 1rem 1rem 0;
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  .card-header {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.horizontal-card .card-info .button-container {
+  margin: unset;
+  margin-top: auto;
+}
+.horizontal-card .card-info .btn-floating {
+  padding: 5px;
+}
+
+.cart-card .quantity-container {
+  margin: auto 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.cart-card .quantity-container input {
+  padding: 5px;
+  width: 3rem;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+@media (max-width: 700px) {
+  .horizontal-card {
+    width: fit-content;
+    width: 100%;
+  }
+  .horizontal-card:hover {
+    cursor: pointer;
+  }
+
+  .horizontal-card .image-container .pic {
+    object-fit: contain;
+    width: 10rem;
+    // width: fit-content;
+    padding: 1rem;
+  }
+
+  .horizontal-card .card-info {
+    width: 100%;
+    .card-header {
+      white-space: unset;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .horizontal-card .card-info .button-container .btn {
+    font-size: 14px;
+  }
+  .horizontal-card .card-info .btn-floating {
+    padding: 5px;
+  }
+
+  .cart-card .quantity-container {
+    margin: auto 0;
+    display: flex;
+    gap: 1rem;
+  }
+}
