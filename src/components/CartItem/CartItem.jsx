@@ -124,7 +124,7 @@ const CartItem = ({ cartItem }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className='card horizontal-card pos-rel cart-card'>
+        <div className='card horizontal-card pos-rel cart-card theme-body-background'>
           <div className='image-container'>
             <img className='pic' src={img} alt='' />
           </div>
@@ -148,7 +148,7 @@ const CartItem = ({ cartItem }) => {
                 default='1'
                 min='1'
                 value={quantity}
-                className='quantity-input'
+                className='quantity-input theme-background'
                 onChange={handleQuantity}
               />
               <button

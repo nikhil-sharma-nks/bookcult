@@ -64,7 +64,7 @@ const ProductsContainer = () => {
   const uniqueProducts = [...new Set(searchedProducts)];
   return (
     <>
-      <div className='products-container my-4'>
+      <div className='products-container py-4'>
         {loading ? (
           <Spinner />
         ) : (

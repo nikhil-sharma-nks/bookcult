@@ -53,6 +53,11 @@ const ProductReducer = (state, action) => {
         ...state,
         cart: payload,
       };
+    case 'TOGGLE_MENU':
+      return {
+        ...state,
+        isMobileViewOpen: !state.isMobileViewOpen,
+      };
     case 'LOGOUT': {
       return {
         categories: {},

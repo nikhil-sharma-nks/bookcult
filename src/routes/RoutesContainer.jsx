@@ -1,6 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Home, ProductListing, Login, Signup, Cart, Wishlist } from '../pages/';
+import {
+  Home,
+  ProductListing,
+  Login,
+  Signup,
+  Cart,
+  Wishlist,
+  SingleProduct,
+} from '../pages/';
 import AuthenticatedRoutes from './AuthenticatedRoutes';
 import Mockman from 'mockman-js';
 
@@ -12,6 +20,7 @@ const RoutesContainer = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/products/:categoryName' element={<ProductListing />} />
+      <Route path='/product/:productId' element={<SingleProduct />} />
       <Route path='/mock' element={<Mockman />} />
       <Route path='/' element={<AuthenticatedRoutes />}>
         <Route path='/cart' element={<Cart />} />
