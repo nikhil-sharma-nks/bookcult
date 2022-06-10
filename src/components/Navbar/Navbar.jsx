@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useProduct, useAuth } from '../../context';
+import { useProduct, useAuth, useTheme } from '../../context';
 import './navbar.scss';
 import { makeToast } from '../../components';
+import { getTotalCartItem } from '../../utils';
 
 const Navbar = () => {
   const location = useLocation();
@@ -10,6 +11,8 @@ const Navbar = () => {
   const { productState, productDispatch } = useProduct();
   const { authState, authDispatch } = useAuth();
   const { searchQuery } = productState;
+  const { theme, toggleTheme } = useTheme();
+
   const handleLogout = () => {
     makeToast('You Are Now Logged Out', 'success');
     authDispatch({
@@ -29,12 +32,19 @@ const Navbar = () => {
       payload: e.target.value,
     });
   };
+  const toggleMenuClick = () => {
+    productDispatch({
+      type: 'TOGGLE_MENU',
+    });
+  };
+  const { isMobileViewOpen } = productState;
+
   return (
     <div className='navigationbar-container'>
       <div className='navbar'>
         <Link to='/'>
           <div className='navbar-header'>
-            <div className='h2'>BookCult</div>
+            <div className='h2 main-title'>BookCult</div>
             <Link to='/products' className='product-link'>
               Products
             </Link>
@@ -61,11 +71,25 @@ const Navbar = () => {
           ></i>
         </div>
         <div className='navigation-buttons'>
+          {location.pathname.includes('products') ? (
+            <i
+              className='fa-solid fa-bars menu-hamburg '
+              onClick={toggleMenuClick}
+            ></i>
+          ) : null}
+
+          <div className='theme-container' onClick={toggleTheme}>
+            {theme === 'light' ? (
+              <i className='fa-regular fa-moon'></i>
+            ) : (
+              <i className='fa-solid fa-sun'></i>
+            )}
+          </div>
           <Link to='/cart'>
             <div className='badge-container'>
               <i className='fas fa-shopping-cart'></i>
               <span className='badge badge-icon'>
-                {productState.cart ? productState.cart.length : '0'}
+                {productState.cart ? getTotalCartItem(productState.cart) : '0'}
               </span>
             </div>
           </Link>

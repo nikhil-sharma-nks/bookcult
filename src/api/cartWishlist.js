@@ -48,6 +48,58 @@ const getUserCart = async () => {
   }
 };
 
+const removeFromCart = async (productId) => {
+  let token = JSON.parse(localStorage.getItem('token'));
+  const removeFromCartBaseUrl = `/api/user/cart/${productId}`;
+  try {
+    const {
+      data: { cart },
+      status,
+    } = await axios.delete(removeFromCartBaseUrl, {
+      headers: {
+        authorization: token,
+      },
+    });
+    if (status >= 200 && status <= 300) {
+      return cart;
+    } else {
+      throw new Error("Couldn't remove from cart!");
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const updateCartQuantity = async (productId, type) => {
+  let token = JSON.parse(localStorage.getItem('token'));
+  const updateCartQuantityBaseUrl = `/api/user/cart/${productId}`;
+  try {
+    const {
+      data: { cart },
+      status,
+    } = await axios.post(
+      updateCartQuantityBaseUrl,
+      {
+        action: {
+          type: type,
+        },
+      },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+    if (status >= 200 && status <= 300) {
+      return cart;
+    } else {
+      throw new Error("Couldn't update cart!");
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const getUserWishlist = async () => {
   let token = JSON.parse(localStorage.getItem('token'));
 
@@ -115,7 +167,7 @@ const removeFromWishlist = async (productId) => {
     if (status >= 200 && status <= 300) {
       return wishlist;
     } else {
-      throw new Error("Couldn't add to wishlist!");
+      throw new Error("Couldn't remove from wishlist!");
     }
   } catch (error) {
     console.log(error.message);
@@ -124,6 +176,8 @@ const removeFromWishlist = async (productId) => {
 export {
   addToCart,
   getUserCart,
+  removeFromCart,
+  updateCartQuantity,
   getUserWishlist,
   addToWishlist,
   removeFromWishlist,

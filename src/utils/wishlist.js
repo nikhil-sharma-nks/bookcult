@@ -1,5 +1,5 @@
-const checkIfItemInWishlist = (title, wishlist) => {
-  const foundInWishlist = wishlist?.find((item) => item.title === title);
+const checkIfItemInWishlist = (id, wishlist) => {
+  const foundInWishlist = wishlist?.find((item) => item._id === id);
   return foundInWishlist ? true : false;
 };
 

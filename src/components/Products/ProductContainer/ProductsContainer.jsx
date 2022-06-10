@@ -64,11 +64,14 @@ const ProductsContainer = () => {
   const uniqueProducts = [...new Set(searchedProducts)];
   return (
     <>
-      <div className='products-container my-4'>
-        {loading && <Spinner />}
-        {uniqueProducts?.map((product) => (
-          <ProductCard product={product} key={product._id} />
-        ))}
+      <div className='products-container py-4'>
+        {loading ? (
+          <Spinner />
+        ) : (
+          uniqueProducts?.map((product) => (
+            <ProductCard product={product} key={product._id} />
+          ))
+        )}
       </div>
     </>
   );

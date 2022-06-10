@@ -6,5 +6,12 @@ export {
 } from './sort-filter';
 
 export { searchProducts } from './search';
-export { checkIfItemInCart } from './cart';
+export {
+  checkIfItemInCart,
+  getTotalCartItem,
+  getTotalCartMRP,
+  getTotalDiscount,
+  getTotalPrice,
+  getTotalDiscountPercentage,
+} from './cart';
 export { checkIfItemInWishlist } from './wishlist';

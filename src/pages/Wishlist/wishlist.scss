@@ -1,0 +1,9 @@
+.wishlist-page {
+  min-height: calc(100vh - 4rem);
+  .wishlist-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
