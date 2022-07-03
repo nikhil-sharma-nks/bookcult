@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './signup.scss';
-import { useAuth } from '../../context';
+// import { useAuth } from '../../context';
 import { signupUser } from '../../api';
 import { makeToast, Spinner } from '../../components';
+import { useSelector } from 'react-redux';
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { authState } = useAuth();
+  // const { authState } = useAuth();
   const [signupInput, setSignupInput] = useState({
     firstName: '',
     lastName: '',
@@ -16,8 +17,11 @@ const Signup = () => {
     password: '',
     confirmPassword: '',
   });
+
+  const authStore = useSelector((state) => state.authStore);
+
   useEffect(() => {
-    if (authState.isAuth) {
+    if (authStore.isAuth) {
       makeToast('You Are Already Logged In', 'success');
       navigate('/products');
     }

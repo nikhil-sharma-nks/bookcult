@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './singleProduct.scss';
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../../context';
+// import { useAuth } from '../../context';
 import { checkIfItemInCart, checkIfItemInWishlist } from '../../utils';
 import { makeToast, Spinner } from '../../components';
 import { useNavigate } from 'react-router-dom';
@@ -20,10 +20,12 @@ const SingleProduct = () => {
   const [product, setProduct] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  const { authState } = useAuth();
+  // const { authState } = useAuth();
   const { productId } = useParams();
 
   const productStore = useSelector((state) => state.productStore);
+  const authStore = useSelector((state) => state.authStore);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const SingleProduct = () => {
   }, [productStore]);
 
   const handleProductClick = async () => {
-    if (!authState.isAuth) {
+    if (!authStore.isAuth) {
       makeToast('Please Login First To Add To Cart', 'error');
       navigate('/login');
       return;

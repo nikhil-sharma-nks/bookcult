@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuth, useTheme } from '../../context';
+import { useTheme } from '../../context';
 import './navbar.scss';
 import { makeToast } from '../../components';
 import { getTotalCartItem } from '../../utils';
@@ -8,24 +8,28 @@ import {
   searchedQuery,
   handleLogoutStore,
   toggleMenu,
-} from '../../redux/slices/productSlice';
+  logoutUserStore,
+} from '../../redux';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { authState, authDispatch } = useAuth();
+  // const { authState, authDispatch } = useAuth();
   const { theme, toggleTheme } = useTheme();
-  const dispatch = useDispatch();
   const productStore = useSelector((state) => state.productStore);
   const { searchQuery } = productStore;
 
+  const dispatch = useDispatch();
+  const authStore = useSelector((state) => state.authStore);
+
   const handleLogout = () => {
     makeToast('You Are Now Logged Out', 'success');
-    authDispatch({
-      type: 'LOGOUT',
-    });
+    // authDispatch({
+    //   type: 'LOGOUT',
+    // });
     dispatch(handleLogoutStore());
+    dispatch(logoutUserStore());
     navigate('/');
   };
   const handleFocus = () => {
@@ -95,11 +99,11 @@ const Navbar = () => {
               </span>
             </div>
           </Link>
-          {authState.isAuth && authState.token ? (
+          {authStore.isAuth && authStore.token ? (
             <div className='dropdown'>
               <div className='avatar-text avatar-circular avatar-small'>
-                {authState.user.firstName.charAt(0).toUpperCase() +
-                  authState.user.lastName.charAt(0).toUpperCase()}
+                {authStore.user.firstName.charAt(0).toUpperCase() +
+                  authStore.user.lastName.charAt(0).toUpperCase()}
               </div>
               <div className='dropdown-content'>
                 <div>Profile</div>

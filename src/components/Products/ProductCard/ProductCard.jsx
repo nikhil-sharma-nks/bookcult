@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './productCard.scss';
 import { addToCart, addToWishlist, removeFromWishlist } from '../../../api';
 import { makeToast } from '../../';
-import { useAuth } from '../../../context';
+// import { useAuth } from '../../../context';
 import { checkIfItemInCart, checkIfItemInWishlist } from '../../../utils';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   addToCartStore,
@@ -26,9 +26,10 @@ const ProductCard = ({ product }) => {
   } = product;
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [isProductInWishlist, setIsProductInWishlist] = useState(false);
-  const { authState } = useAuth();
+  // const { authState } = useAuth();
   const dispatch = useDispatch();
   const productStore = useSelector((state) => state.productStore);
+  const authStore = useSelector((state) => state.authStore);
 
   useEffect(() => {
     setIsProductInCart(checkIfItemInCart(_id, productStore?.cart));
@@ -36,7 +37,7 @@ const ProductCard = ({ product }) => {
   }, [productStore]);
 
   const handleProductClick = async () => {
-    if (!authState.isAuth) {
+    if (!authStore.isAuth) {
       makeToast('Please Login First To Add To Cart', 'error');
       navigate('/login');
       return;
@@ -56,7 +57,7 @@ const ProductCard = ({ product }) => {
   };
 
   const handleWishlist = async () => {
-    if (!authState.isAuth) {
+    if (!authStore.isAuth) {
       makeToast('Please Login First To Add To Wishlist', 'error');
       navigate('/login');
       return;
