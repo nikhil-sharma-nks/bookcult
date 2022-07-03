@@ -18,7 +18,6 @@ const Signup = () => {
   });
   useEffect(() => {
     if (authState.isAuth) {
-      console.log({ authState });
       makeToast('You Are Already Logged In', 'success');
       navigate('/products');
     }

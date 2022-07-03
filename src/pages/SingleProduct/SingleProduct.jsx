@@ -6,6 +6,11 @@ import { checkIfItemInCart, checkIfItemInWishlist } from '../../utils';
 import { makeToast, Spinner } from '../../components';
 import { useNavigate, Link } from 'react-router-dom';
 import { addToCart, addToWishlist, removeFromWishlist } from '../../api';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  addToCartStore,
+  addToWishlistStore,
+} from '../../redux/slices/productSlice';
 
 const SingleProduct = () => {
   const navigate = useNavigate();
@@ -15,25 +20,28 @@ const SingleProduct = () => {
   const [product, setProduct] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  const { productState, productDispatch } = useProduct();
+  const { productDispatch } = useProduct();
 
   const { authState } = useAuth();
   const { productId } = useParams();
 
+  const productStore = useSelector((state) => state.productStore);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setIsLoading(true);
-    const foundProduct = productState.products.find(
+    const foundProduct = productStore.products.find(
       (item) => item._id === productId
     );
     if (foundProduct) {
-      setIsProductInCart(checkIfItemInCart(productId, productState?.cart));
+      setIsProductInCart(checkIfItemInCart(productId, productStore?.cart));
       setIsProductInWishlist(
-        checkIfItemInWishlist(productId, productState?.wishlist)
+        checkIfItemInWishlist(productId, productStore?.wishlist)
       );
       setProduct(foundProduct);
     }
     setIsLoading(false);
-  }, [productState]);
+  }, [productStore]);
 
   const handleProductClick = async () => {
     if (!authState.isAuth) {
@@ -44,10 +52,11 @@ const SingleProduct = () => {
     if (!isProductInCart) {
       try {
         const data = await addToCart(product);
-        productDispatch({
-          type: 'ADD_TO_CART',
-          payload: data,
-        });
+        // productDispatch({
+        //   type: 'ADD_TO_CART',
+        //   payload: data,
+        // });
+        dispatch(addToCartStore(data));
         makeToast(`${product.title} Added to Cart`, 'success');
       } catch (error) {
         makeToast('Failed Add to Cart', 'error');
@@ -61,10 +70,11 @@ const SingleProduct = () => {
     if (!isProductInWishlist) {
       try {
         const data = await addToWishlist(product);
-        productDispatch({
-          type: 'ADD_TO_WISHLIST',
-          payload: data,
-        });
+        // productDispatch({
+        //   type: 'ADD_TO_WISHLIST',
+        //   payload: data,
+        // });
+        dispatch(addToWishlistStore(data));
 
         makeToast(`${product.title} Added to wishlist`, 'success');
       } catch (error) {
@@ -74,10 +84,12 @@ const SingleProduct = () => {
     } else {
       try {
         const data = await removeFromWishlist(product._id);
-        productDispatch({
-          type: 'ADD_TO_WISHLIST',
-          payload: data,
-        });
+        // productDispatch({
+        //   type: 'ADD_TO_WISHLIST',
+        //   payload: data,
+        // });
+        dispatch(addToWishlistStore(data));
+
         makeToast(`${product.title} Removed from wishlist`, 'success');
       } catch (error) {
         makeToast('Failed Removed from wishlist', 'error');

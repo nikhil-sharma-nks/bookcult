@@ -9,15 +9,17 @@ import {
   getTotalDiscountPercentage,
 } from '../../utils';
 import './cart.scss';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Cart = () => {
   const { productState, productDispatch } = useProduct();
-  const { cart } = productState;
+  const productStore = useSelector((state) => state.productStore);
+  const { cart } = productStore;
   return (
     <>
       <div className='cart-page-container theme-background'>
         <p className='text-xxl text-centered color-primary py-4  theme-background'>
-          My Cart ({getTotalCartItem(productState.cart)} Items)
+          My Cart ({getTotalCartItem(cart)} Items)
         </p>
         <div className='cart-page'>
           {cart?.length > 0 ? (
@@ -31,8 +33,8 @@ const Cart = () => {
                 <p className='h3'>PRICE DETAILS</p>
                 <hr />
                 <div className='price-item mt-2'>
-                  <p>Cart Total ({getTotalCartItem(productState.cart)} Item)</p>
-                  <p>₹{getTotalCartMRP(productState.cart)}</p>
+                  <p>Cart Total ({getTotalCartItem(cart)} Item)</p>
+                  <p>₹{getTotalCartMRP(cart)}</p>
                 </div>
                 {/* <div className='price-item mt-2'>
                 <p>Cart Total </p>
@@ -40,7 +42,7 @@ const Cart = () => {
               </div> */}
                 <div className='price-item mt-2'>
                   <p>Cart Discount</p>
-                  <p>- ₹{getTotalDiscount(productState.cart)}</p>
+                  <p>- ₹{getTotalDiscount(cart)}</p>
                 </div>
                 <div className='price-item my-2'>
                   <p>Delivery Charges</p>
@@ -49,7 +51,7 @@ const Cart = () => {
                 <hr />
                 <div className='price-item my-2'>
                   <p className='h3'>Total</p>
-                  <p className='h3'>₹{getTotalPrice(productState.cart)}</p>
+                  <p className='h3'>₹{getTotalPrice(cart)}</p>
                 </div>
                 <hr />
                 <button className='btn btn-primary mt-auto'>

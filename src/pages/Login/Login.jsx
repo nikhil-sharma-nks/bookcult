@@ -4,6 +4,11 @@ import './login.scss';
 import { loginUser } from '../../api';
 import { useAuth, useProduct } from '../../context';
 import { makeToast, Spinner } from '../../components';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  addToCartStore,
+  addToWishlistStore,
+} from '../../redux/slices/productSlice';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +24,7 @@ const Login = () => {
     email: 'nikhil.harsh.sharma@gmail.com',
     password: '123',
   };
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (authState.isAuth) {
@@ -44,11 +50,13 @@ const Login = () => {
         delete authData.user.password;
         delete authData.user.confirmPassword;
         authDispatch({ type: 'LOGIN_USER', payload: authData });
-        productDispatch({ type: 'ADD_TO_CART', payload: authData.user.cart });
-        productDispatch({
-          type: 'ADD_TO_WISHLIST',
-          payload: authData.user.wishlist,
-        });
+        // productDispatch({ type: 'ADD_TO_CART', payload: authData.user.cart });
+        dispatch(addToCartStore(authData.user.cart));
+        // productDispatch({
+        //   type: 'ADD_TO_WISHLIST',
+        //   payload: authData.user.wishlist,
+        // });
+        dispatch(addToWishlistStore(authData.user.wishlist));
         navigate('/products');
       } else {
         setLoading(false);
