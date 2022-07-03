@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { makeServer } from './server';
 import { BrowserRouter } from 'react-router-dom';
-import { ProductProvider, AuthProvider, ThemeProvider } from './context';
+import { AuthProvider, ThemeProvider } from './context';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
 
@@ -17,11 +17,9 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <AuthProvider>
-          <ProductProvider>
-            <ThemeProvider>
-              <App />
-            </ThemeProvider>
-          </ProductProvider>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
         </AuthProvider>
       </Provider>
     </BrowserRouter>

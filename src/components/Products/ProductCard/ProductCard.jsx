@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './productCard.scss';
 import { addToCart, addToWishlist, removeFromWishlist } from '../../../api';
 import { makeToast } from '../../';
-import { useProduct, useAuth } from '../../../context';
+import { useAuth } from '../../../context';
 import { checkIfItemInCart, checkIfItemInWishlist } from '../../../utils';
 import { useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,7 +26,6 @@ const ProductCard = ({ product }) => {
   } = product;
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [isProductInWishlist, setIsProductInWishlist] = useState(false);
-  const { productState, productDispatch } = useProduct();
   const { authState } = useAuth();
   const dispatch = useDispatch();
   const productStore = useSelector((state) => state.productStore);
@@ -45,10 +44,6 @@ const ProductCard = ({ product }) => {
     if (!isProductInCart) {
       try {
         const data = await addToCart(product);
-        // productDispatch({
-        //   type: 'ADD_TO_CART',
-        //   payload: data,
-        // });
         dispatch(addToCartStore(data));
         makeToast(`${title} Added to Cart`, 'success');
       } catch (error) {
@@ -69,12 +64,7 @@ const ProductCard = ({ product }) => {
     if (!isProductInWishlist) {
       try {
         const data = await addToWishlist(product);
-        // productDispatch({
-        //   type: 'ADD_TO_WISHLIST',
-        //   payload: data,
-        // });
         dispatch(addToWishlistStore(data));
-
         makeToast(`${title} Added to wishlist`, 'success');
       } catch (error) {
         makeToast('Failed To Add To Wishlist', 'error');
@@ -83,12 +73,7 @@ const ProductCard = ({ product }) => {
     } else {
       try {
         const data = await removeFromWishlist(product._id);
-        // productDispatch({
-        //   type: 'ADD_TO_WISHLIST',
-        //   payload: data,
-        // });
         dispatch(addToWishlistStore(data));
-
         makeToast(`${title} Removed from wishlist`, 'success');
       } catch (error) {
         makeToast('Failed Removed from wishlist', 'error');

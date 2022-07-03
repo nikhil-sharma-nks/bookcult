@@ -1,6 +1,5 @@
 import React from 'react';
 import { CartItem } from '../../components';
-import { useProduct } from '../../context';
 import {
   getTotalCartItem,
   getTotalCartMRP,
@@ -9,10 +8,9 @@ import {
   getTotalDiscountPercentage,
 } from '../../utils';
 import './cart.scss';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
-  const { productState, productDispatch } = useProduct();
   const productStore = useSelector((state) => state.productStore);
   const { cart } = productStore;
   return (
@@ -36,10 +34,6 @@ const Cart = () => {
                   <p>Cart Total ({getTotalCartItem(cart)} Item)</p>
                   <p>₹{getTotalCartMRP(cart)}</p>
                 </div>
-                {/* <div className='price-item mt-2'>
-                <p>Cart Total </p>
-                <p>₹450</p>
-              </div> */}
                 <div className='price-item mt-2'>
                   <p>Cart Discount</p>
                   <p>- ₹{getTotalDiscount(cart)}</p>

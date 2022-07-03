@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './cartItem.scss';
-import { useProduct } from '../../context';
 import {
   removeFromCart,
   updateCartQuantity,
@@ -30,7 +29,6 @@ const CartItem = ({ cartItem }) => {
     qty,
   } = cartItem;
 
-  const { productState, productDispatch } = useProduct();
   const [quantity, setQuantity] = useState(qty || 1);
   const [loading, setLoading] = useState(false);
   const [isProductInWishlist, setIsProductInWishlist] = useState(false);
@@ -46,10 +44,6 @@ const CartItem = ({ cartItem }) => {
       try {
         setLoading(true);
         const cart = await updateCartQuantity(_id, type);
-        // productDispatch({
-        //   type: 'ADD_TO_CART',
-        //   payload: cart,
-        // });
         dispatch(addToCartStore(cart));
         setLoading(false);
       } catch (error) {
@@ -65,12 +59,7 @@ const CartItem = ({ cartItem }) => {
       try {
         setLoading(true);
         const cart = await updateCartQuantity(_id, type);
-        // productDispatch({
-        //   type: 'ADD_TO_CART',
-        //   payload: cart,
-        // });
         dispatch(addToCartStore(cart));
-
         setLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -83,12 +72,7 @@ const CartItem = ({ cartItem }) => {
     try {
       setLoading(true);
       const cart = await removeFromCart(_id);
-      // productDispatch({
-      //   type: 'ADD_TO_CART',
-      //   payload: cart,
-      // });
       dispatch(addToCartStore(cart));
-
       makeToast(`${title} removed from cart`, 'success');
       setLoading(false);
     } catch (error) {
@@ -101,17 +85,9 @@ const CartItem = ({ cartItem }) => {
     if (!isProductInWishlist) {
       try {
         const data = await addToWishlist(cartItem);
-        // productDispatch({
-        //   type: 'ADD_TO_WISHLIST',
-        //   payload: data,
-        // });
         dispatch(addToWishlistStore(data));
 
         const cart = await removeFromCart(_id);
-        // productDispatch({
-        //   type: 'ADD_TO_CART',
-        //   payload: cart,
-        // });
         dispatch(addToCartStore(cart));
 
         makeToast(`${title} Moved to wishlist`, 'success');
@@ -122,12 +98,7 @@ const CartItem = ({ cartItem }) => {
     } else {
       try {
         const data = await removeFromWishlist(cartItem._id);
-        // productDispatch({
-        //   type: 'ADD_TO_WISHLIST',
-        //   payload: data,
-        // });
         dispatch(addToWishlistStore(data));
-
         makeToast(`${title} Removed from wishlist`, 'success');
       } catch (error) {
         makeToast('Failed Removed from wishlist', 'error');

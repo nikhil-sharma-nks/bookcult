@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../..';
 import './productContainer.scss';
-import { useProduct } from '../../../context/';
 import { useParams } from 'react-router-dom';
 import { Spinner } from '../../';
 import { getProducts, getCategories } from '../../../api';
@@ -20,8 +19,6 @@ import {
 } from '../../../utils';
 
 const ProductsContainer = () => {
-  const { productState, productDispatch } = useProduct();
-
   const [loading, setLoading] = useState(false);
   const productStore = useSelector((state) => state.productStore);
   const { categories, price, products, rating, sortBy, searchQuery } =
@@ -35,10 +32,6 @@ const ProductsContainer = () => {
       try {
         setLoading(true);
         const products = await getProducts();
-        // productDispatch({
-        //   type: 'LOAD_PRODUCTS',
-        //   payload: products,
-        // });
         dispatch(loadProducts(products));
         setUniqueProducts(products);
         setLoading(false);
@@ -58,10 +51,6 @@ const ProductsContainer = () => {
           ? { ...categoryPayload, [categoryName]: true }
           : categoryPayload;
 
-        // productDispatch({
-        //   type: 'LOAD_CATEGORIES',
-        //   payload: modifiedCategoryPayload,
-        // });
         dispatch(loadCategories(modifiedCategoryPayload));
       } catch (error) {
         console.log(error);

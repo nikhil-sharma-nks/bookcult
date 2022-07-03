@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useProduct, useAuth, useTheme } from '../../context';
+import { useAuth, useTheme } from '../../context';
 import './navbar.scss';
 import { makeToast } from '../../components';
 import { getTotalCartItem } from '../../utils';
@@ -14,7 +14,6 @@ import { useSelector, useDispatch } from 'react-redux';
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { productState, productDispatch } = useProduct();
   const { authState, authDispatch } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const dispatch = useDispatch();
@@ -26,7 +25,6 @@ const Navbar = () => {
     authDispatch({
       type: 'LOGOUT',
     });
-    // productDispatch({ type: 'LOGOUT' });
     dispatch(handleLogoutStore());
     navigate('/');
   };
@@ -35,20 +33,9 @@ const Navbar = () => {
       navigate('/products');
     }
   };
-  const handleChange = (e) => {
-    // productDispatch({
-    //   type: 'SEARCH_QUERY',
-    //   payload: e.target.value,
-    // });
-    dispatch(searchedQuery(e.target.value));
-  };
-  const toggleMenuClick = () => {
-    // productDispatch({
-    //   type: 'TOGGLE_MENU',
-    // });
-    dispatch(toggleMenu());
-  };
-  // const { isMobileViewOpen } = productState;
+  const handleChange = (e) => dispatch(searchedQuery(e.target.value));
+
+  const toggleMenuClick = () => dispatch(toggleMenu());
 
   return (
     <div className='navigationbar-container'>
@@ -73,13 +60,7 @@ const Navbar = () => {
           />
           <i
             className='fa-solid fa-xmark search-cancel'
-            onClick={() => {
-              // productDispatch({
-              //   type: 'SEARCH_QUERY',
-              //   payload: '',
-              // });
-              dispatch(searchedQuery(''));
-            }}
+            onClick={() => dispatch(searchedQuery(''))}
           ></i>
         </div>
         <div className='navigation-buttons'>

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
 import { loginUser } from '../../api';
-import { useAuth, useProduct } from '../../context';
+import { useAuth } from '../../context';
 import { makeToast, Spinner } from '../../components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   addToCartStore,
   addToWishlistStore,
@@ -15,7 +15,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const { authState, authDispatch } = useAuth();
-  const { productDispatch } = useProduct();
   const [loginInput, setLoginInput] = useState({
     email: '',
     password: '',
@@ -50,12 +49,7 @@ const Login = () => {
         delete authData.user.password;
         delete authData.user.confirmPassword;
         authDispatch({ type: 'LOGIN_USER', payload: authData });
-        // productDispatch({ type: 'ADD_TO_CART', payload: authData.user.cart });
         dispatch(addToCartStore(authData.user.cart));
-        // productDispatch({
-        //   type: 'ADD_TO_WISHLIST',
-        //   payload: authData.user.wishlist,
-        // });
         dispatch(addToWishlistStore(authData.user.wishlist));
         navigate('/products');
       } else {

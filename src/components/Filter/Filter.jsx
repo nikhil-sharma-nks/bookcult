@@ -1,23 +1,10 @@
 import React from 'react';
 import './filter.scss';
-import { useProduct } from '../../context';
 import { useSelector, useDispatch } from 'react-redux';
 import { changedFilter, clearFilter } from '../../redux/slices/productSlice';
 
 const Filter = () => {
-  const { productState, productDispatch } = useProduct();
-  // const { categories } = productState;
-
   const productStore = useSelector((state) => state.productStore);
-
-  // const handleChange = (actionType, payload, isChecked) => {
-  //   const finalPayload =
-  //     actionType === 'CATEGORY' ? { [payload]: isChecked } : payload;
-  //   productDispatch({
-  //     type: actionType,
-  //     payload: finalPayload,
-  //   });
-  // };
   const dispatch = useDispatch();
 
   const handleDispatch = (type, value, isChecked) => {
@@ -42,13 +29,7 @@ const Filter = () => {
       >
         <div className='filter-clear-container'>
           <p className='text-l'>Filters</p>
-          <div
-            className='clear-button'
-            onClick={() => {
-              // handleChange('CLEAR');
-              dispatch(clearFilter());
-            }}
-          >
+          <div className='clear-button' onClick={() => dispatch(clearFilter())}>
             Clear
           </div>
         </div>
@@ -60,10 +41,7 @@ const Filter = () => {
             max='1000'
             step='20'
             list='price-range'
-            onChange={(e) => {
-              // handleChange('PRICE', e.target.value);
-              handleDispatch('price', e.target.value);
-            }}
+            onChange={(e) => handleDispatch('price', e.target.value)}
             value={parseInt(productStore.price)}
           />
           <datalist className='price-container' id='price-range'>
@@ -84,14 +62,13 @@ const Filter = () => {
                     id={categoryName}
                     name={categoryName}
                     checked={isSelected}
-                    onChange={(e) => {
-                      // handleChange('CATEGORY', categoryName, e.target.checked);
+                    onChange={(e) =>
                       handleDispatch(
                         'categories',
                         categoryName,
                         e.target.checked
-                      );
-                    }}
+                      )
+                    }
                   />
                   <label className='ml-1' htmlFor={categoryName}>
                     {categoryName.charAt(0).toUpperCase() +
@@ -110,10 +87,7 @@ const Filter = () => {
               id='4_AND_ABOVE'
               name='price'
               value='4_AND_ABOVE'
-              onChange={() => {
-                // handleChange('RATING', '4_AND_ABOVE');
-                handleDispatch('rating', '4_AND_ABOVE');
-              }}
+              onChange={() => handleDispatch('rating', '4_AND_ABOVE')}
               checked={productStore.rating === '4_AND_ABOVE'}
             />
             <label className='ml-1' htmlFor='4_AND_ABOVE'>
@@ -126,10 +100,7 @@ const Filter = () => {
               id='3_AND_ABOVE'
               name='price'
               value='3_AND_ABOVE'
-              onChange={() => {
-                // handleChange('RATING', '3_AND_ABOVE');
-                handleDispatch('rating', '3_AND_ABOVE');
-              }}
+              onChange={() => handleDispatch('rating', '3_AND_ABOVE')}
               checked={productStore.rating === '3_AND_ABOVE'}
             />
             <label className='ml-1' htmlFor='3_AND_ABOVE'>
@@ -142,10 +113,7 @@ const Filter = () => {
               id='2_AND_ABOVE'
               name='price'
               value='2_AND_ABOVE'
-              onChange={() => {
-                // handleChange('RATING', '2_AND_ABOVE');
-                handleDispatch('rating', '2_AND_ABOVE');
-              }}
+              onChange={() => handleDispatch('rating', '2_AND_ABOVE')}
               checked={productStore.rating === '2_AND_ABOVE'}
             />
             <label className='ml-1' htmlFor='2_AND_ABOVE'>
@@ -158,10 +126,7 @@ const Filter = () => {
               id='1_AND_ABOVE'
               name='price'
               value='1_AND_ABOVE'
-              onChange={() => {
-                // handleChange('RATING', '1_AND_ABOVE');
-                handleDispatch('rating', '1_AND_ABOVE');
-              }}
+              onChange={() => handleDispatch('rating', '1_AND_ABOVE')}
               checked={productStore.rating === '1_AND_ABOVE'}
             />
             <label className='ml-1' htmlFor='1_AND_ABOVE'>
@@ -177,10 +142,7 @@ const Filter = () => {
               id='LOW_TO_HIGH'
               name='sort_by'
               value='LOW_TO_HIGH'
-              onChange={() => {
-                // handleChange('SORT_BY', 'LOW_TO_HIGH');
-                handleDispatch('sortBy', 'LOW_TO_HIGH');
-              }}
+              onChange={() => handleDispatch('sortBy', 'LOW_TO_HIGH')}
               checked={productStore.sortBy === 'LOW_TO_HIGH'}
             />
             <label className='ml-1' htmlFor='LOW_TO_HIGH'>
@@ -193,10 +155,7 @@ const Filter = () => {
               id='HIGH_TO_LOW'
               name='sort_by'
               value='HIGH_TO_LOW'
-              onChange={() => {
-                // handleChange('SORT_BY', 'HIGH_TO_LOW');
-                handleDispatch('sortBy', 'HIGH_TO_LOW');
-              }}
+              onChange={() => handleDispatch('sortBy', 'HIGH_TO_LOW')}
               checked={productStore.sortBy === 'HIGH_TO_LOW'}
             />
             <label className='ml-1' htmlFor='HIGH_TO_LOW'>
@@ -209,10 +168,7 @@ const Filter = () => {
               id='NEWEST_FIRST'
               name='sort_by'
               value='NEWEST_FIRST'
-              onChange={() => {
-                // handleChange('SORT_BY', 'NEWEST_FIRST');
-                handleDispatch('sortBy', 'NEWEST_FIRST');
-              }}
+              onChange={() => handleDispatch('sortBy', 'NEWEST_FIRST')}
               checked={productStore.sortBy === 'NEWEST_FIRST'}
             />
             <label className='ml-1' htmlFor='NEWEST_FIRST'>
@@ -225,10 +181,7 @@ const Filter = () => {
               id='POPULARITY'
               name='sort_by'
               value='POPULARITY'
-              onChange={() => {
-                // handleChange('SORT_BY', 'POPULARITY');
-                handleDispatch('sortBy', 'POPULARITY');
-              }}
+              onChange={() => handleDispatch('sortBy', 'POPULARITY')}
               checked={productStore.sortBy === 'POPULARITY'}
             />
             <label className='ml-1' htmlFor='POPULARITY'>

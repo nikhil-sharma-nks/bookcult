@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './singleProduct.scss';
 import { useParams } from 'react-router-dom';
-import { useProduct, useAuth } from '../../context';
+import { useAuth } from '../../context';
 import { checkIfItemInCart, checkIfItemInWishlist } from '../../utils';
 import { makeToast, Spinner } from '../../components';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { addToCart, addToWishlist, removeFromWishlist } from '../../api';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -19,8 +19,6 @@ const SingleProduct = () => {
   const [isProductInWishlist, setIsProductInWishlist] = useState(false);
   const [product, setProduct] = useState();
   const [isLoading, setIsLoading] = useState(false);
-
-  const { productDispatch } = useProduct();
 
   const { authState } = useAuth();
   const { productId } = useParams();
@@ -52,10 +50,6 @@ const SingleProduct = () => {
     if (!isProductInCart) {
       try {
         const data = await addToCart(product);
-        // productDispatch({
-        //   type: 'ADD_TO_CART',
-        //   payload: data,
-        // });
         dispatch(addToCartStore(data));
         makeToast(`${product.title} Added to Cart`, 'success');
       } catch (error) {
@@ -70,10 +64,6 @@ const SingleProduct = () => {
     if (!isProductInWishlist) {
       try {
         const data = await addToWishlist(product);
-        // productDispatch({
-        //   type: 'ADD_TO_WISHLIST',
-        //   payload: data,
-        // });
         dispatch(addToWishlistStore(data));
 
         makeToast(`${product.title} Added to wishlist`, 'success');
@@ -84,10 +74,6 @@ const SingleProduct = () => {
     } else {
       try {
         const data = await removeFromWishlist(product._id);
-        // productDispatch({
-        //   type: 'ADD_TO_WISHLIST',
-        //   payload: data,
-        // });
         dispatch(addToWishlistStore(data));
 
         makeToast(`${product.title} Removed from wishlist`, 'success');
