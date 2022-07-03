@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './productCard.scss';
 import { addToCart, addToWishlist, removeFromWishlist } from '../../../api';
 import { makeToast } from '../../';
-// import { useAuth } from '../../../context';
 import { checkIfItemInCart, checkIfItemInWishlist } from '../../../utils';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,7 +25,6 @@ const ProductCard = ({ product }) => {
   } = product;
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [isProductInWishlist, setIsProductInWishlist] = useState(false);
-  // const { authState } = useAuth();
   const dispatch = useDispatch();
   const productStore = useSelector((state) => state.productStore);
   const authStore = useSelector((state) => state.authStore);

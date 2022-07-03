@@ -15,7 +15,6 @@ import { useSelector, useDispatch } from 'react-redux';
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  // const { authState, authDispatch } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const productStore = useSelector((state) => state.productStore);
   const { searchQuery } = productStore;
@@ -25,9 +24,6 @@ const Navbar = () => {
 
   const handleLogout = () => {
     makeToast('You Are Now Logged Out', 'success');
-    // authDispatch({
-    //   type: 'LOGOUT',
-    // });
     dispatch(handleLogoutStore());
     dispatch(logoutUserStore());
     navigate('/');

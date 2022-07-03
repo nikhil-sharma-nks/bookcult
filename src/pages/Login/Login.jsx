@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
 import { loginUser } from '../../api';
-// import { useAuth } from '../../context';
 import { makeToast, Spinner } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -15,7 +14,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // const { authState, authDispatch } = useAuth();
   const [loginInput, setLoginInput] = useState({
     email: '',
     password: '',
@@ -50,7 +48,6 @@ const Login = () => {
 
         delete authData.user.password;
         delete authData.user.confirmPassword;
-        // authDispatch({ type: 'LOGIN_USER', payload: authData });
         dispatch(loginUserStore(authData));
         dispatch(addToCartStore(authData.user.cart));
         dispatch(addToWishlistStore(authData.user.wishlist));
