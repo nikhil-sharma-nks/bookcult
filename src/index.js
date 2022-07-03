@@ -5,6 +5,8 @@ import App from './App';
 import { makeServer } from './server';
 import { BrowserRouter } from 'react-router-dom';
 import { ProductProvider, AuthProvider, ThemeProvider } from './context';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 // Call make Server
 makeServer();
@@ -13,13 +15,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-        <ProductProvider>
-          <ThemeProvider>
-            <App />
-          </ThemeProvider>
-        </ProductProvider>
-      </AuthProvider>
+      <Provider store={store}>
+        <AuthProvider>
+          <ProductProvider>
+            <ThemeProvider>
+              <App />
+            </ThemeProvider>
+          </ProductProvider>
+        </AuthProvider>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
