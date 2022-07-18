@@ -10,7 +10,6 @@ import {
   SingleProduct,
 } from '../pages/';
 import AuthenticatedRoutes from './AuthenticatedRoutes';
-import Mockman from 'mockman-js';
 
 const RoutesContainer = () => {
   return (
@@ -21,7 +20,6 @@ const RoutesContainer = () => {
       <Route path='/signup' element={<Signup />} />
       <Route path='/products/:categoryName' element={<ProductListing />} />
       <Route path='/product/:productId' element={<SingleProduct />} />
-      <Route path='/mock' element={<Mockman />} />
       <Route path='/' element={<AuthenticatedRoutes />}>
         <Route path='/cart' element={<Cart />} />
         <Route path='/wishlist' element={<Wishlist />} />

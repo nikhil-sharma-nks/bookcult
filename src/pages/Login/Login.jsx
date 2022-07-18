@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
 import { loginUser } from '../../api';
-import { useAuth, useProduct } from '../../context';
 import { makeToast, Spinner } from '../../components';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  addToCartStore,
+  addToWishlistStore,
+  loginUserStore,
+} from '../../redux/';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { authState, authDispatch } = useAuth();
-  const { productDispatch } = useProduct();
   const [loginInput, setLoginInput] = useState({
     email: '',
     password: '',
@@ -19,9 +22,11 @@ const Login = () => {
     email: 'nikhil.harsh.sharma@gmail.com',
     password: '123',
   };
+  const dispatch = useDispatch();
+  const authStore = useSelector((state) => state.authStore);
 
   useEffect(() => {
-    if (authState.isAuth) {
+    if (authStore.isAuth) {
       makeToast('You Are Already Logged In', 'success');
       navigate('/products');
     }
@@ -43,12 +48,9 @@ const Login = () => {
 
         delete authData.user.password;
         delete authData.user.confirmPassword;
-        authDispatch({ type: 'LOGIN_USER', payload: authData });
-        productDispatch({ type: 'ADD_TO_CART', payload: authData.user.cart });
-        productDispatch({
-          type: 'ADD_TO_WISHLIST',
-          payload: authData.user.wishlist,
-        });
+        dispatch(loginUserStore(authData));
+        dispatch(addToCartStore(authData.user.cart));
+        dispatch(addToWishlistStore(authData.user.wishlist));
         navigate('/products');
       } else {
         setLoading(false);

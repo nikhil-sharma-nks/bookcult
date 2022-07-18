@@ -1,10 +1,12 @@
 import React from 'react';
 import './wishlist.scss';
 import { ProductCard } from '../../components';
-import { useProduct } from '../../context';
+import { useSelector } from 'react-redux';
+
 const Wishlist = () => {
-  const { productState } = useProduct();
-  const { wishlist } = productState;
+  const productStore = useSelector((state) => state.productStore);
+
+  const { wishlist } = productStore;
   return (
     <>
       <div className='wishlist-page  theme-background'>

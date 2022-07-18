@@ -1,24 +1,31 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useProduct, useAuth, useTheme } from '../../context';
+import { useTheme } from '../../context';
 import './navbar.scss';
 import { makeToast } from '../../components';
 import { getTotalCartItem } from '../../utils';
+import {
+  searchedQuery,
+  handleLogoutStore,
+  toggleMenu,
+  logoutUserStore,
+} from '../../redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { productState, productDispatch } = useProduct();
-  const { authState, authDispatch } = useAuth();
-  const { searchQuery } = productState;
   const { theme, toggleTheme } = useTheme();
+  const productStore = useSelector((state) => state.productStore);
+  const { searchQuery } = productStore;
+
+  const dispatch = useDispatch();
+  const authStore = useSelector((state) => state.authStore);
 
   const handleLogout = () => {
     makeToast('You Are Now Logged Out', 'success');
-    authDispatch({
-      type: 'LOGOUT',
-    });
-    productDispatch({ type: 'LOGOUT' });
+    dispatch(handleLogoutStore());
+    dispatch(logoutUserStore());
     navigate('/');
   };
   const handleFocus = () => {
@@ -26,18 +33,9 @@ const Navbar = () => {
       navigate('/products');
     }
   };
-  const handleChange = (e) => {
-    productDispatch({
-      type: 'SEARCH_QUERY',
-      payload: e.target.value,
-    });
-  };
-  const toggleMenuClick = () => {
-    productDispatch({
-      type: 'TOGGLE_MENU',
-    });
-  };
-  const { isMobileViewOpen } = productState;
+  const handleChange = (e) => dispatch(searchedQuery(e.target.value));
+
+  const toggleMenuClick = () => dispatch(toggleMenu());
 
   return (
     <div className='navigationbar-container'>
@@ -62,12 +60,7 @@ const Navbar = () => {
           />
           <i
             className='fa-solid fa-xmark search-cancel'
-            onClick={() =>
-              productDispatch({
-                type: 'SEARCH_QUERY',
-                payload: '',
-              })
-            }
+            onClick={() => dispatch(searchedQuery(''))}
           ></i>
         </div>
         <div className='navigation-buttons'>
@@ -89,7 +82,7 @@ const Navbar = () => {
             <div className='badge-container'>
               <i className='fas fa-shopping-cart'></i>
               <span className='badge badge-icon'>
-                {productState.cart ? getTotalCartItem(productState.cart) : '0'}
+                {productStore.cart ? getTotalCartItem(productStore.cart) : '0'}
               </span>
             </div>
           </Link>
@@ -98,15 +91,15 @@ const Navbar = () => {
               <i className='fas fa-heart'> </i>
               <span className='badge badge-icon'>
                 {' '}
-                {productState.wishlist ? productState.wishlist.length : '0'}
+                {productStore.wishlist ? productStore.wishlist.length : '0'}
               </span>
             </div>
           </Link>
-          {authState.isAuth && authState.token ? (
+          {authStore.isAuth && authStore.token ? (
             <div className='dropdown'>
               <div className='avatar-text avatar-circular avatar-small'>
-                {authState.user.firstName.charAt(0).toUpperCase() +
-                  authState.user.lastName.charAt(0).toUpperCase()}
+                {authStore.user.firstName.charAt(0).toUpperCase() +
+                  authStore.user.lastName.charAt(0).toUpperCase()}
               </div>
               <div className='dropdown-content'>
                 <div>Profile</div>

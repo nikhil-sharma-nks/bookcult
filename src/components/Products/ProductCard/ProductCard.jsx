@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './productCard.scss';
 import { addToCart, addToWishlist, removeFromWishlist } from '../../../api';
 import { makeToast } from '../../';
-import { useProduct, useAuth } from '../../../context';
 import { checkIfItemInCart, checkIfItemInWishlist } from '../../../utils';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  addToCartStore,
+  addToWishlistStore,
+} from '../../../redux/slices/productSlice';
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -21,16 +25,17 @@ const ProductCard = ({ product }) => {
   } = product;
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [isProductInWishlist, setIsProductInWishlist] = useState(false);
-  const { productState, productDispatch } = useProduct();
-  const { authState } = useAuth();
+  const dispatch = useDispatch();
+  const productStore = useSelector((state) => state.productStore);
+  const authStore = useSelector((state) => state.authStore);
 
   useEffect(() => {
-    setIsProductInCart(checkIfItemInCart(_id, productState?.cart));
-    setIsProductInWishlist(checkIfItemInWishlist(_id, productState?.wishlist));
-  }, [productState]);
+    setIsProductInCart(checkIfItemInCart(_id, productStore?.cart));
+    setIsProductInWishlist(checkIfItemInWishlist(_id, productStore?.wishlist));
+  }, [productStore]);
 
   const handleProductClick = async () => {
-    if (!authState.isAuth) {
+    if (!authStore.isAuth) {
       makeToast('Please Login First To Add To Cart', 'error');
       navigate('/login');
       return;
@@ -38,10 +43,7 @@ const ProductCard = ({ product }) => {
     if (!isProductInCart) {
       try {
         const data = await addToCart(product);
-        productDispatch({
-          type: 'ADD_TO_CART',
-          payload: data,
-        });
+        dispatch(addToCartStore(data));
         makeToast(`${title} Added to Cart`, 'success');
       } catch (error) {
         makeToast('Failed Add to Cart', 'error');
@@ -53,7 +55,7 @@ const ProductCard = ({ product }) => {
   };
 
   const handleWishlist = async () => {
-    if (!authState.isAuth) {
+    if (!authStore.isAuth) {
       makeToast('Please Login First To Add To Wishlist', 'error');
       navigate('/login');
       return;
@@ -61,10 +63,7 @@ const ProductCard = ({ product }) => {
     if (!isProductInWishlist) {
       try {
         const data = await addToWishlist(product);
-        productDispatch({
-          type: 'ADD_TO_WISHLIST',
-          payload: data,
-        });
+        dispatch(addToWishlistStore(data));
         makeToast(`${title} Added to wishlist`, 'success');
       } catch (error) {
         makeToast('Failed To Add To Wishlist', 'error');
@@ -73,10 +72,7 @@ const ProductCard = ({ product }) => {
     } else {
       try {
         const data = await removeFromWishlist(product._id);
-        productDispatch({
-          type: 'ADD_TO_WISHLIST',
-          payload: data,
-        });
+        dispatch(addToWishlistStore(data));
         makeToast(`${title} Removed from wishlist`, 'success');
       } catch (error) {
         makeToast('Failed Removed from wishlist', 'error');

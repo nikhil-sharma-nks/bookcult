@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './signup.scss';
-import { useAuth } from '../../context';
 import { signupUser } from '../../api';
 import { makeToast, Spinner } from '../../components';
+import { useSelector } from 'react-redux';
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { authState, authDispatch } = useAuth();
   const [signupInput, setSignupInput] = useState({
     firstName: '',
     lastName: '',
@@ -16,9 +15,11 @@ const Signup = () => {
     password: '',
     confirmPassword: '',
   });
+
+  const authStore = useSelector((state) => state.authStore);
+
   useEffect(() => {
-    if (authState.isAuth) {
-      console.log({ authState });
+    if (authStore.isAuth) {
       makeToast('You Are Already Logged In', 'success');
       navigate('/products');
     }
@@ -41,16 +42,6 @@ const Signup = () => {
       const data = await signupUser(signupInput);
       if (data) {
         makeToast('Signup successful, You can now log in!', 'success');
-        const { encodedToken, createdUser } = data;
-        const authData = {
-          token: encodedToken,
-          user: createdUser,
-          isAuth: true,
-        };
-        // console.log({ data });
-        // delete authData.user.password;
-        // delete authData.user.confirmPassword;
-        // authDispatch({ type: 'SIGNUP_USER', payload: authData });
         navigate('/login');
       } else {
         setLoading(false);
