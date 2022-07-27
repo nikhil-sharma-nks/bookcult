@@ -1,4 +1,4 @@
-export { loginUser, signupUser } from './authService';
+export { loginUser, signupUser, addPhoneNo, addAddress } from './authService';
 export {
   addToCart,
   getUserCart,
