@@ -7,3 +7,4 @@ export { Filter } from './Filter/Filter';
 export { makeToast } from './Toast/makeToast';
 export { Spinner } from './Spinner/Spinner';
 export { CartItem } from './CartItem/CartItem';
+export { Address } from './Address/Address';

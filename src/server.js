@@ -50,8 +50,8 @@ export function makeServer({ environment = 'development' } = {}) {
         server.create('product', { ...item });
       });
       const userProfile = {
-        phoneNo: '',
         addressList: [],
+        phoneNo: '',
       };
       users.forEach((item) =>
         server.create('user', {

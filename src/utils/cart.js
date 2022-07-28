@@ -35,6 +35,14 @@ const getTotalDiscountPercentage = (cart) => {
   return Math.floor((discount / price) * 100);
 };
 
+const formatAddress = (addressList) => {
+  const modifiedAddressList = addressList.map(
+    (address) =>
+      `${address.name}, ${address.street}, ${address.city}, ${address.state}, ${address.pincode}, Contact - ${address.phone}`
+  );
+  return modifiedAddressList;
+};
+
 export {
   checkIfItemInCart,
   getTotalCartItem,
@@ -42,4 +50,5 @@ export {
   getTotalDiscount,
   getTotalPrice,
   getTotalDiscountPercentage,
+  formatAddress,
 };

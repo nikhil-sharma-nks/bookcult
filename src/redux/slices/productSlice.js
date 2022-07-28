@@ -10,6 +10,7 @@ const initialState = {
   rating: '',
   searchQuery: '',
   isMobileViewOpen: false,
+  cartTotal: '',
 };
 
 export const productSlice = createSlice({
@@ -55,9 +56,13 @@ export const productSlice = createSlice({
       state.rating = '';
       state.price = 1000;
       state.searchQuery = '';
+      state.cartTotal = '';
     },
     toggleMenu: (state) => {
       state.isMobileViewOpen = !state.isMobileViewOpen;
+    },
+    addCartTotal: (state, action) => {
+      state.cartTotal = action.payload;
     },
   },
 });
@@ -72,6 +77,7 @@ export const {
   addToWishlistStore,
   handleLogoutStore,
   toggleMenu,
+  addCartTotal,
 } = productSlice.actions;
 
 export default productSlice.reducer;

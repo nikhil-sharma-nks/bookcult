@@ -110,8 +110,8 @@ export const addPhoneNumber = function (schema, request) {
         }
       );
     }
-    const user = schema.users.findBy({ _id: userId });
     this.db.users.update({ _id: userId }, { phoneNo: phoneNo });
+    const user = schema.users.findBy({ _id: userId });
     return new Response(200, {}, { user });
   } catch (error) {
     return new Response(
@@ -141,7 +141,8 @@ export const addAddress = function (schema, request) {
       { _id: userId },
       { addressList: [...user.addressList, address] }
     );
-    return new Response(200, {}, { user });
+    const updatedUser = schema.users.findBy({ _id: userId });
+    return new Response(200, {}, { updatedUser });
   } catch (error) {
     return new Response(
       500,

@@ -8,6 +8,7 @@ import {
   Cart,
   Wishlist,
   SingleProduct,
+  Checkout,
 } from '../pages/';
 import AuthenticatedRoutes from './AuthenticatedRoutes';
 
@@ -23,6 +24,7 @@ const RoutesContainer = () => {
       <Route path='/' element={<AuthenticatedRoutes />}>
         <Route path='/cart' element={<Cart />} />
         <Route path='/wishlist' element={<Wishlist />} />
+        <Route path='/checkout' element={<Checkout />} />
       </Route>
     </Routes>
   );

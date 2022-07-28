@@ -1,0 +1,25 @@
+.checkout-page {
+  min-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  .address-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    .address-container-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--text-color);
+      padding: 10px 0;
+    }
+    .address-list {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

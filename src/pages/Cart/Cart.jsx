@@ -8,10 +8,14 @@ import {
   getTotalDiscountPercentage,
 } from '../../utils';
 import './cart.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { addCartTotal } from '../../redux';
 
 const Cart = () => {
   const productStore = useSelector((state) => state.productStore);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { cart } = productStore;
   return (
     <>
@@ -48,7 +52,13 @@ const Cart = () => {
                   <p className='h3'>₹{getTotalPrice(cart)}</p>
                 </div>
                 <hr />
-                <button className='btn btn-primary mt-auto'>
+                <button
+                  className='btn btn-primary mt-auto'
+                  onClick={() => {
+                    dispatch(addCartTotal(getTotalPrice(cart)));
+                    navigate('/checkout');
+                  }}
+                >
                   <i className='fas fa-shopping-cart mr-1'></i> Place Order
                 </button>
                 <p className='text-centered mt-2'>
