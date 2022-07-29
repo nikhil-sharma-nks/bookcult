@@ -5,12 +5,19 @@ const initialState = {
   cart: [],
   wishlist: [],
   products: [],
+  orders: [],
   sortBy: '',
   price: 1000,
   rating: '',
   searchQuery: '',
   isMobileViewOpen: false,
   cartTotal: '',
+  cartSummary: {
+    cartTotal: '',
+    totalCart: '',
+    selectedAddress: '',
+    paymentId: '',
+  },
 };
 
 export const productSlice = createSlice({
@@ -63,6 +70,24 @@ export const productSlice = createSlice({
     },
     addCartTotal: (state, action) => {
       state.cartTotal = action.payload;
+      state.cartSummary.cartTotal = action.payload;
+    },
+    addSelectedAddress: (state, action) => {
+      state.cartSummary.selectedAddress = action.payload;
+    },
+    addPaymentId: (state, action) => {
+      state.cartSummary.paymentId = action.payload;
+      state.cartSummary.totalCart = state.cart;
+    },
+    orderConfirmed: (state, action) => {
+      state.cart = [];
+      state.orders = [...state.orders, action.payload];
+      state.cartSummary = {
+        cartTotal: '',
+        totalCart: '',
+        selectedAddress: '',
+        paymentId: '',
+      };
     },
   },
 });
@@ -78,6 +103,9 @@ export const {
   handleLogoutStore,
   toggleMenu,
   addCartTotal,
+  addSelectedAddress,
+  addPaymentId,
+  orderConfirmed,
 } = productSlice.actions;
 
 export default productSlice.reducer;

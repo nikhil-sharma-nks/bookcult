@@ -36,10 +36,11 @@ const getTotalDiscountPercentage = (cart) => {
 };
 
 const formatAddress = (addressList) => {
-  const modifiedAddressList = addressList.map(
-    (address) =>
-      `${address.name}, ${address.street}, ${address.city}, ${address.state}, ${address.pincode}, Contact - ${address.phone}`
-  );
+  const modifiedAddressList = addressList.map((address) => ({
+    name: address.name,
+    address: `${address.street}, ${address.city}, ${address.state}, ${address.pincode}`,
+    contact: address.phone,
+  }));
   return modifiedAddressList;
 };
 

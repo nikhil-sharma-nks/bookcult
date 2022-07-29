@@ -9,6 +9,9 @@ export {
   handleLogoutStore,
   toggleMenu,
   addCartTotal,
+  addSelectedAddress,
+  addPaymentId,
+  orderConfirmed,
 } from './slices/productSlice';
 
 export {

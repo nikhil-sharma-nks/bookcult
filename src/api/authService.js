@@ -74,5 +74,28 @@ const addAddress = async (address) => {
     return false;
   }
 };
+const addOrder = async (order) => {
+  const addOrderBaseUrl = '/api/user/order';
+  let token = JSON.parse(localStorage.getItem('token'));
+  try {
+    const { data, status } = await axios.post(
+      addOrderBaseUrl,
+      {
+        order: order,
+      },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+    if (status >= 200 && status <= 300) return data;
+    if (status === 500) throw new Error('Signup Failed!');
+    if (status === 401) throw new Error('Unauthorized access');
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
+};
 
-export { loginUser, signupUser, addPhoneNo, addAddress };
+export { loginUser, signupUser, addPhoneNo, addAddress, addOrder };

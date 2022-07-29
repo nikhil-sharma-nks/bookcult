@@ -4,12 +4,14 @@ import {
   signupHandler,
   addPhoneNumber,
   addAddress,
+  addToOrders,
 } from './backend/controllers/AuthController';
 import {
   addItemToCartHandler,
   getCartItemsHandler,
   removeItemFromCartHandler,
   updateCartItemHandler,
+  removeAllItemsHandler,
 } from './backend/controllers/CartController';
 import {
   getAllCategoriesHandler,
@@ -58,6 +60,7 @@ export function makeServer({ environment = 'development' } = {}) {
           ...item,
           cart: [],
           wishlist: [],
+          orders: [],
           ...userProfile,
         })
       );
@@ -71,6 +74,7 @@ export function makeServer({ environment = 'development' } = {}) {
       this.post('/auth/login', loginHandler.bind(this));
       this.post('/user/phoneNo', addPhoneNumber.bind(this));
       this.post('/user/address', addAddress.bind(this));
+      this.post('/user/order', addToOrders.bind(this));
 
       // products routes (public)
       this.get('/products', getAllProductsHandler.bind(this));
@@ -88,6 +92,7 @@ export function makeServer({ environment = 'development' } = {}) {
         '/user/cart/:productId',
         removeItemFromCartHandler.bind(this)
       );
+      this.delete('/user/cart/remove', removeAllItemsHandler.bind(this));
 
       // wishlist routes (private)
       this.get('/user/wishlist', getWishlistItemsHandler.bind(this));
