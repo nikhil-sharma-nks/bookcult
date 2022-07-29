@@ -47,14 +47,14 @@ const PayBtn = () => {
               const order = {
                 cartTotal: productStore.cartSummary.cartTotal,
                 totalCart: productStore.cart,
-                selectedAddress: productStore.cartSummary.cartTotal,
+                selectedAddress: productStore.cartSummary.selectedAddress,
                 paymentId: response.razorpay_payment_id,
                 date: new Date().toDateString(),
               };
               const newData = await addOrder(order);
               dispatch(orderConfirmed(order));
               dispatch(addPaymentId(response.razorpay_payment_id));
-              navigate('/products');
+              navigate('/orders');
               makeToast('Payment Successfull!', 'success');
             } catch (error) {
               console.log(error.message);

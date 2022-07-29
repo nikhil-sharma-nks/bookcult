@@ -8,7 +8,7 @@ const ProductListing = () => {
   const { isMobileViewOpen } = productStore;
 
   return (
-    <div className='product-listing'>
+    <div className='product-listing theme-background'>
       <Filter />
       {!isMobileViewOpen && <ProductsContainer />}
     </div>

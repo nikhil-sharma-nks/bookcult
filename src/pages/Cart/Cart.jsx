@@ -19,7 +19,7 @@ const Cart = () => {
   const { cart } = productStore;
   return (
     <>
-      <div className='cart-page-container theme-background'>
+      <div className='cart-page-container theme-background pb-5'>
         <p className='text-xxl text-centered color-primary py-4  theme-background'>
           My Cart ({getTotalCartItem(cart)} Items)
         </p>

@@ -33,7 +33,7 @@ const Checkout = () => {
 
   return (
     <>
-      <div className='checkout-page theme-background'>
+      <div className='checkout-page theme-background pb-5'>
         <div className='cart-summary mt-4'>
           <div className='cart-summary-item theme-body-background mt-0'>
             <p className='cart-summary-item-title  color-primary'>TITLE</p>
