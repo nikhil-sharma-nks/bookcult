@@ -89,6 +89,9 @@ export const productSlice = createSlice({
         paymentId: '',
       };
     },
+    loadOrders: (state, action) => {
+      state.orders = action.payload;
+    },
   },
 });
 
@@ -106,6 +109,7 @@ export const {
   addSelectedAddress,
   addPaymentId,
   orderConfirmed,
+  loadOrders,
 } = productSlice.actions;
 
 export default productSlice.reducer;

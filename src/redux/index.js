@@ -12,6 +12,7 @@ export {
   addSelectedAddress,
   addPaymentId,
   orderConfirmed,
+  loadOrders,
 } from './slices/productSlice';
 
 export {

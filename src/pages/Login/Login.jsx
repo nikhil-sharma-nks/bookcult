@@ -8,6 +8,7 @@ import {
   addToCartStore,
   addToWishlistStore,
   loginUserStore,
+  loadOrders,
 } from '../../redux/';
 
 const Login = () => {
@@ -51,6 +52,7 @@ const Login = () => {
         dispatch(loginUserStore(authData));
         dispatch(addToCartStore(authData.user.cart));
         dispatch(addToWishlistStore(authData.user.wishlist));
+        dispatch(loadOrders(authData.user.orders));
         navigate('/products');
       } else {
         setLoading(false);
@@ -76,10 +78,10 @@ const Login = () => {
   };
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <div className='auth-page'>
+      <div className='auth-page theme-background'>
+        {loading ? (
+          <Spinner />
+        ) : (
           <div className='login-page-container-bookcult'>
             <form
               className='form-group'
@@ -144,8 +146,8 @@ const Login = () => {
               </div>
             </form>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };
