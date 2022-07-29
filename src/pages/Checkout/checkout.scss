@@ -40,3 +40,15 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .checkout-page {
+    .cart-summary {
+      width: 90%;
+    }
+
+    .address-container {
+      width: 90%;
+    }
+  }
+}

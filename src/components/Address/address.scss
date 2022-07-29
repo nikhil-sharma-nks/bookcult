@@ -24,3 +24,11 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .address-modal-container {
+    .address-modal {
+      width: 80%;
+    }
+  }
+}
