@@ -48,21 +48,24 @@ const Navbar = () => {
             </Link>
           </div>
         </Link>
-        <div className='navbar-search'>
-          <i className='fa-solid fa-magnifying-glass'></i>
-          <input
-            type='text'
-            className='form-control'
-            placeholder='Search Products Here'
-            value={searchQuery}
-            onChange={handleChange}
-            onFocus={handleFocus}
-          />
-          <i
-            className='fa-solid fa-xmark search-cancel'
-            onClick={() => dispatch(searchedQuery(''))}
-          ></i>
-        </div>
+        {['/', '/products'].includes(location.pathname) && (
+          <div className='navbar-search'>
+            <i className='fa-solid fa-magnifying-glass'></i>
+            <input
+              type='text'
+              className='form-control'
+              placeholder='Search Products Here'
+              value={searchQuery}
+              onChange={handleChange}
+              onFocus={handleFocus}
+            />
+            <i
+              className='fa-solid fa-xmark search-cancel'
+              onClick={() => dispatch(searchedQuery(''))}
+            ></i>
+          </div>
+        )}
+
         <div className='navigation-buttons'>
           {location.pathname.includes('products') ? (
             <i
@@ -102,7 +105,8 @@ const Navbar = () => {
                   authStore.user.lastName.charAt(0).toUpperCase()}
               </div>
               <div className='dropdown-content'>
-                <div>Profile</div>
+                <div onClick={() => navigate('/profile')}>Profile</div>
+                <div onClick={() => navigate('/orders')}>Orders</div>
                 <div onClick={handleLogout}>Logout</div>
               </div>
             </div>
