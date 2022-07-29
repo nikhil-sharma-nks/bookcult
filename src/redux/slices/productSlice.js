@@ -5,11 +5,19 @@ const initialState = {
   cart: [],
   wishlist: [],
   products: [],
+  orders: [],
   sortBy: '',
   price: 1000,
   rating: '',
   searchQuery: '',
   isMobileViewOpen: false,
+  cartTotal: '',
+  cartSummary: {
+    cartTotal: '',
+    totalCart: '',
+    selectedAddress: '',
+    paymentId: '',
+  },
 };
 
 export const productSlice = createSlice({
@@ -55,9 +63,34 @@ export const productSlice = createSlice({
       state.rating = '';
       state.price = 1000;
       state.searchQuery = '';
+      state.cartTotal = '';
     },
     toggleMenu: (state) => {
       state.isMobileViewOpen = !state.isMobileViewOpen;
+    },
+    addCartTotal: (state, action) => {
+      state.cartTotal = action.payload;
+      state.cartSummary.cartTotal = action.payload;
+    },
+    addSelectedAddress: (state, action) => {
+      state.cartSummary.selectedAddress = action.payload;
+    },
+    addPaymentId: (state, action) => {
+      state.cartSummary.paymentId = action.payload;
+      state.cartSummary.totalCart = state.cart;
+    },
+    orderConfirmed: (state, action) => {
+      state.cart = [];
+      state.orders = [...state.orders, action.payload];
+      state.cartSummary = {
+        cartTotal: '',
+        totalCart: '',
+        selectedAddress: '',
+        paymentId: '',
+      };
+    },
+    loadOrders: (state, action) => {
+      state.orders = action.payload;
     },
   },
 });
@@ -72,6 +105,11 @@ export const {
   addToWishlistStore,
   handleLogoutStore,
   toggleMenu,
+  addCartTotal,
+  addSelectedAddress,
+  addPaymentId,
+  orderConfirmed,
+  loadOrders,
 } = productSlice.actions;
 
 export default productSlice.reducer;

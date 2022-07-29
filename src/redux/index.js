@@ -8,6 +8,15 @@ export {
   addToWishlistStore,
   handleLogoutStore,
   toggleMenu,
+  addCartTotal,
+  addSelectedAddress,
+  addPaymentId,
+  orderConfirmed,
+  loadOrders,
 } from './slices/productSlice';
 
-export { loginUserStore, logoutUserStore } from './slices/authSlice';
+export {
+  loginUserStore,
+  logoutUserStore,
+  updateUser,
+} from './slices/authSlice';

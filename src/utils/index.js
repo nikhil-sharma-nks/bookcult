@@ -13,5 +13,6 @@ export {
   getTotalDiscount,
   getTotalPrice,
   getTotalDiscountPercentage,
+  formatAddress,
 } from './cart';
 export { checkIfItemInWishlist } from './wishlist';

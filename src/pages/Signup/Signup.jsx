@@ -56,10 +56,10 @@ const Signup = () => {
 
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <div className='auth-page'>
+      <div className='auth-page theme-background'>
+        {loading ? (
+          <Spinner />
+        ) : (
           <div className='signup-page-container'>
             <form
               className='form-group'
@@ -163,8 +163,8 @@ const Signup = () => {
               </div>
             </form>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };

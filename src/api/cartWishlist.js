@@ -70,6 +70,28 @@ const removeFromCart = async (productId) => {
   }
 };
 
+const removeAllCart = async () => {
+  let token = JSON.parse(localStorage.getItem('token'));
+  const removeAllCartBaseUrl = `/api/user/cart/remove`;
+  try {
+    const {
+      data: { cart },
+      status,
+    } = await axios.delete(removeAllCartBaseUrl, {
+      headers: {
+        authorization: token,
+      },
+    });
+    if (status >= 200 && status <= 300) {
+      return cart;
+    } else {
+      throw new Error("Couldn't remove from cart!");
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const updateCartQuantity = async (productId, type) => {
   let token = JSON.parse(localStorage.getItem('token'));
   const updateCartQuantityBaseUrl = `/api/user/cart/${productId}`;
@@ -181,4 +203,5 @@ export {
   getUserWishlist,
   addToWishlist,
   removeFromWishlist,
+  removeAllCart
 };

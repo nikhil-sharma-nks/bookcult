@@ -74,7 +74,7 @@ const ProductsContainer = () => {
 
   return (
     <>
-      <div className='products-container py-4'>
+      <div className='products-container theme-background py-4'>
         {loading ? (
           <Spinner />
         ) : (
