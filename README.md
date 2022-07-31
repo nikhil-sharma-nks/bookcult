@@ -5,8 +5,9 @@ BookCult is an e-commerce for books. It features books of different genres.
 ## Tech Stack
 1. Frontend - React (useContext, useReducer, useEffect, useState)
 2. Redux
-3. Mock Backend - Mockbee, MirajeJs
-4. Styles - SCSS
+3. Payment - Razorpay
+4. Mock Backend - Mockbee, MirajeJs
+5. Styles - SCSS
 
 ## Features
 1. Home Page
@@ -27,6 +28,9 @@ BookCult is an e-commerce for books. It features books of different genres.
 10. Single Product Page
 11. Loading & Alerts
 10. Cart Summary
+11. Payment Integration
+12. Orders Page
+13. Profile Page
 
 ## Demo/ScreenShot
 
