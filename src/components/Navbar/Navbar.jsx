@@ -49,7 +49,13 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {['/', '/products'].includes(location.pathname) && (
+        {[
+          '/',
+          '/products',
+          '/products/fiction',
+          '/products/non-fiction',
+          '/products/self-help',
+        ].includes(location.pathname) && (
           <div className='navbar-search'>
             <i className='fa-solid fa-magnifying-glass'></i>
             <input
