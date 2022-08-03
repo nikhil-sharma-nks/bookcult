@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { ProductCard } from '../..';
+import { ProductCard, Error, makeToast } from '../..';
 import './productContainer.scss';
 import { useParams } from 'react-router-dom';
 import { Spinner } from '../../';
 import { getProducts, getCategories } from '../../../api';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+
 import {
   loadProducts,
   loadCategories,
+  clearFilter,
+  clearSearch,
 } from '../../../redux/slices/productSlice';
 
 import {
@@ -26,6 +30,7 @@ const ProductsContainer = () => {
   const dispatch = useDispatch();
   const [uniqueProducts, setUniqueProducts] = useState([]);
 
+  const navigate = useNavigate();
   const { categoryName } = useParams();
   useEffect(() => {
     (async () => {
@@ -81,6 +86,42 @@ const ProductsContainer = () => {
           uniqueProducts?.map((product) => (
             <ProductCard product={product} key={product._id} />
           ))
+        )}
+        {uniqueProducts.length === 0 && (
+          <Error>
+            <p className='text-l'>No Products with Name "{searchQuery}"</p>
+            <div>
+              <button
+                className='btn btn-primary mr-4 mb-4'
+                onClick={() => {
+                  dispatch(clearFilter());
+                  makeToast('Filters Cleared', 'info');
+                }}
+              >
+                Try Clear Filters
+              </button>
+              <button
+                className='btn btn-primary mr-4 mb-4'
+                onClick={() => {
+                  dispatch(clearFilter());
+                  dispatch(clearSearch());
+                }}
+              >
+                Clear Search
+              </button>
+
+              <button
+                type='submit'
+                className='btn btn-primary mr-4 mb-4'
+                onClick={() => {
+                  navigate('/');
+                  dispatch(clearSearch());
+                }}
+              >
+                Go To Home
+              </button>
+            </div>
+          </Error>
         )}
       </div>
     </>

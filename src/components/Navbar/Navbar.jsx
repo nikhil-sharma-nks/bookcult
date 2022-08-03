@@ -40,14 +40,15 @@ const Navbar = () => {
   return (
     <div className='navigationbar-container'>
       <div className='navbar'>
-        <Link to='/'>
-          <div className='navbar-header'>
+        <div className='navbar-header'>
+          <Link to='/'>
             <div className='h2 main-title'>BookCult</div>
-            <Link to='/products' className='product-link'>
-              Products
-            </Link>
-          </div>
-        </Link>
+          </Link>
+          <Link to='/products' className='product-link color-primary'>
+            Products
+          </Link>
+        </div>
+
         {['/', '/products'].includes(location.pathname) && (
           <div className='navbar-search'>
             <i className='fa-solid fa-magnifying-glass'></i>
@@ -112,7 +113,7 @@ const Navbar = () => {
             </div>
           ) : (
             <Link to='/login'>
-              <button className='btn btn-primary-outlined'>Login</button>
+              <button className='btn btn-primary'>Login</button>
             </Link>
           )}
         </div>

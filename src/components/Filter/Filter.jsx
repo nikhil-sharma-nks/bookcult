@@ -1,7 +1,11 @@
 import React from 'react';
 import './filter.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { changedFilter, clearFilter } from '../../redux/slices/productSlice';
+import {
+  changedFilter,
+  clearFilter,
+  clearSearch,
+} from '../../redux/slices/productSlice';
 
 const Filter = () => {
   const productStore = useSelector((state) => state.productStore);
@@ -29,7 +33,13 @@ const Filter = () => {
       >
         <div className='filter-clear-container'>
           <p className='text-l'>Filters</p>
-          <div className='clear-button' onClick={() => dispatch(clearFilter())}>
+          <div
+            className='clear-button'
+            onClick={() => {
+              dispatch(clearFilter());
+              dispatch(clearSearch());
+            }}
+          >
             Clear
           </div>
         </div>
@@ -185,7 +195,7 @@ const Filter = () => {
               checked={productStore.sortBy === 'POPULARITY'}
             />
             <label className='ml-1' htmlFor='POPULARITY'>
-              Popularity
+              Popular First
             </label>
           </div>
         </div>

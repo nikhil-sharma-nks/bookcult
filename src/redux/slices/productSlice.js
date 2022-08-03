@@ -42,7 +42,7 @@ export const productSlice = createSlice({
       state.sortBy = '';
       state.rating = '';
       state.price = 1000;
-      state.searchQuery = '';
+      // state.searchQuery = '';
     },
     searchedQuery: (state, action) => {
       const searchQuery = action.payload;
@@ -53,6 +53,9 @@ export const productSlice = createSlice({
     },
     addToWishlistStore: (state, action) => {
       state.wishlist = action.payload;
+    },
+    clearSearch: (state, action) => {
+      state.searchQuery = '';
     },
     handleLogoutStore: (state) => {
       state.categories = {};
@@ -110,6 +113,7 @@ export const {
   addPaymentId,
   orderConfirmed,
   loadOrders,
+  clearSearch,
 } = productSlice.actions;
 
 export default productSlice.reducer;

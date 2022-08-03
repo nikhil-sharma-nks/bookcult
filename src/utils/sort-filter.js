@@ -34,10 +34,14 @@ const sortByFilter = (filter, products) => {
       return products.sort((a, b) => b.discountedPrice - a.discountedPrice);
     }
     case 'NEWEST_FIRST': {
-      return products.filter((product) => product.tag === 'new');
+      const newProducts = products.filter((product) => product.tag === 'new');
+      return [...new Set([...newProducts, ...products])];
     }
     case 'POPULARITY': {
-      return products.filter((product) => product.tag === 'bestseller');
+      const popularProducts = products.filter(
+        (product) => product.tag === 'bestseller'
+      );
+      return [...new Set([...popularProducts, ...products])];
     }
     default:
       return products;

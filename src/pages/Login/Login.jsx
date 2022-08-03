@@ -125,9 +125,6 @@ const Login = () => {
                     Remember Me
                   </label>
                 </div>
-                <div>
-                  <div>Forget Password</div>
-                </div>
               </div>
               <button className='btn btn-primary mt-3' type='submit'>
                 Login

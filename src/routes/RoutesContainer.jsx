@@ -11,7 +11,9 @@ import {
   Checkout,
   Orders,
   Profile,
+  ErrorPage,
 } from '../pages/';
+import { Error } from '../components';
 import AuthenticatedRoutes from './AuthenticatedRoutes';
 
 const RoutesContainer = () => {
@@ -30,6 +32,7 @@ const RoutesContainer = () => {
         <Route path='/orders' element={<Orders />} />
         <Route path='/profile' element={<Profile />} />
       </Route>
+      <Route path='*' element={<ErrorPage />} />
     </Routes>
   );
 };

@@ -17,10 +17,6 @@ const Profile = () => {
           <p>{authStore.user.lastName}</p>
         </div>
         <div className='user-info-item'>
-          <p>Phone</p>
-          <p>{authStore.user.phoneNo}</p>
-        </div>
-        <div className='user-info-item'>
           <p>Email</p>
           <p>{authStore.user.email}</p>
         </div>

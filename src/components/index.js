@@ -9,3 +9,4 @@ export { Spinner } from './Spinner/Spinner';
 export { CartItem } from './CartItem/CartItem';
 export { Address } from './Address/Address';
 export { PayBtn } from './PayBtn/PayBtn';
+export { Error } from './Error/Error';
