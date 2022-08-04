@@ -1,6 +1,8 @@
 import React from 'react';
 import './orders.scss';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Error } from '../../components';
 
 const Orders = () => {
   const productStore = useSelector((state) => state.productStore);
@@ -12,7 +14,12 @@ const Orders = () => {
         )}
       </p>
       {productStore.orders && productStore?.orders?.length === 0 && (
-        <p className='text-centered text-l py-2 mb-2'>No Orders!</p>
+        <Error>
+          <p className=' mt-2 h2'>No Orders! Browse Products</p>
+          <Link to='/products'>
+            <button className='btn btn-primary'>Go To Products</button>
+          </Link>
+        </Error>
       )}
       <div className='orders-container'>
         {productStore.orders &&
