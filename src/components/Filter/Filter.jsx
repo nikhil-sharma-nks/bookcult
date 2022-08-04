@@ -6,11 +6,11 @@ import {
   clearFilter,
   clearSearch,
 } from '../../redux/slices/productSlice';
+import { makeToast } from '../';
 
 const Filter = () => {
   const productStore = useSelector((state) => state.productStore);
   const dispatch = useDispatch();
-
   const handleDispatch = (type, value, isChecked) => {
     let payload =
       type === 'categories'
@@ -38,6 +38,7 @@ const Filter = () => {
             onClick={() => {
               dispatch(clearFilter());
               dispatch(clearSearch());
+              makeToast('Filters Cleared', 'info');
             }}
           >
             Clear
