@@ -86,7 +86,7 @@ export const removeItemFromCartHandler = function (schema, request) {
     const productId = request.params.productId;
     userCart = userCart.filter((item) => item._id !== productId);
     this.db.users.update({ _id: userId }, { cart: userCart });
-    return new Response(200, {}, { cart: [] });
+    return new Response(200, {}, { cart: userCart });
   } catch (error) {
     return new Response(
       500,
