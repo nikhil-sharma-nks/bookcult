@@ -4,6 +4,7 @@ const checkIfItemInCart = (id, cart) => {
 };
 
 const getTotalCartItem = (cart) => {
+  if (!cart) return 0;
   const totalItems = cart.reduce((prev, current) => prev + current.qty, 0);
   return totalItems;
 };

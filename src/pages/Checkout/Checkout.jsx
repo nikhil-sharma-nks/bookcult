@@ -43,7 +43,10 @@ const Checkout = () => {
             <p className='cart-summary-item-price  color-primary'>TOTAL</p>
           </div>
           {productStore.cart.map((cartItem) => (
-            <div className='cart-summary-item theme-body-background '>
+            <div
+              className='cart-summary-item theme-body-background'
+              key={cartItem._id}
+            >
               <p className='cart-summary-item-title'>{cartItem.title}</p>
               <p className='cart-summary-item-quantity'>
                 {cartItem.qty} X ₹{cartItem.discountedPrice}

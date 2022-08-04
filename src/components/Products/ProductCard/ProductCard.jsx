@@ -43,8 +43,12 @@ const ProductCard = ({ product }) => {
     if (!isProductInCart) {
       try {
         const data = await addToCart(product);
-        dispatch(addToCartStore(data));
-        makeToast(`${title} Added to Cart`, 'success');
+        if (data) {
+          dispatch(addToCartStore(data));
+          makeToast(`${product.title} Added to Cart`, 'success');
+        } else {
+          showErrorMessage();
+        }
       } catch (error) {
         makeToast('Failed Add to Cart', 'error');
         console.log(error);
@@ -63,8 +67,12 @@ const ProductCard = ({ product }) => {
     if (!isProductInWishlist) {
       try {
         const data = await addToWishlist(product);
-        dispatch(addToWishlistStore(data));
-        makeToast(`${title} Added to wishlist`, 'success');
+        if (data) {
+          dispatch(addToWishlistStore(data));
+          makeToast(`${title} Added to wishlist`, 'success');
+        } else {
+          showErrorMessage();
+        }
       } catch (error) {
         makeToast('Failed To Add To Wishlist', 'error');
         console.log(error);
@@ -72,8 +80,12 @@ const ProductCard = ({ product }) => {
     } else {
       try {
         const data = await removeFromWishlist(product._id);
-        dispatch(addToWishlistStore(data));
-        makeToast(`${title} Removed from wishlist`, 'success');
+        if (data) {
+          dispatch(addToWishlistStore(data));
+          makeToast(`${title} Removed from wishlist`, 'success');
+        } else {
+          showErrorMessage();
+        }
       } catch (error) {
         makeToast('Failed Removed from wishlist', 'error');
         console.log(error);
@@ -84,6 +96,14 @@ const ProductCard = ({ product }) => {
   const handleCardClick = () => {
     navigate(`/product/${_id}`);
   };
+
+  const showErrorMessage = () => {
+    makeToast(`Action Failed, See Log For It's Reason`, 'error');
+    console.log(
+      "This function was failed because, you might have refreshed the page somewhere, since this is a frontend application which doesn't have the real backend, it uses mock backend mockbee and mirajeJs which on reloading srves entire mock backend again instead of persisting. So you might want to logout, reload and log in again with test credentials or signup again and use the features of this app without reloading"
+    );
+  };
+
   return (
     <div className='card vertical-card pos-rel'>
       <div className='image-container'>

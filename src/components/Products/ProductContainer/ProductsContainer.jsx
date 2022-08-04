@@ -3,7 +3,7 @@ import { ProductCard, Error, makeToast } from '../..';
 import './productContainer.scss';
 import { useParams } from 'react-router-dom';
 import { Spinner } from '../../';
-import { getProducts, getCategories } from '../../../api';
+import { getProducts, getCategories, getUserCart } from '../../../api';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -12,6 +12,7 @@ import {
   loadCategories,
   clearFilter,
   clearSearch,
+  addToCartStore,
 } from '../../../redux/slices/productSlice';
 
 import {
@@ -25,6 +26,7 @@ import {
 const ProductsContainer = () => {
   const [loading, setLoading] = useState(false);
   const productStore = useSelector((state) => state.productStore);
+  const authStore = useSelector((state) => state.authStore);
   const { categories, price, products, rating, sortBy, searchQuery } =
     productStore;
   const dispatch = useDispatch();
@@ -42,6 +44,14 @@ const ProductsContainer = () => {
         setLoading(false);
       } catch (error) {
         console.log(error);
+      }
+      if (authStore?.isAuth) {
+        const cart = await getUserCart();
+        if (cart) {
+          dispatch(addToCartStore(cart));
+        } else {
+          dispatch(addToCartStore([]));
+        }
       }
       try {
         const categories = await getCategories();
@@ -98,7 +108,7 @@ const ProductsContainer = () => {
                   makeToast('Filters Cleared', 'info');
                 }}
               >
-                Try Clear Filters
+                Try Clearing Filters
               </button>
               <button
                 className='btn btn-primary mr-4 mb-4'

@@ -5,7 +5,7 @@ import './errorPage.scss';
 
 const ErrorPage = () => {
   return (
-    <div className='error-page'>
+    <div className='error-page theme-background'>
       <Error>
         <p className='text-l'>ERROR 404 : PAGE NOT FOUND</p>
         <Link to='/'>
