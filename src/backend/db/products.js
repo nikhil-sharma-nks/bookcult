@@ -54,7 +54,7 @@ const calculateDiscountPercentage = (originalPrice, currentPrice) =>
 
 export const products = [
   {
-    _id: uuid(),
+    _id: '8bb50d3a-35de-4ff5-95d4-c5535a923027',
     title: 'Harry Potter And The Cursed Child',
     author: 'J K Rowling',
     img: HarryPotterAndTheCursedChild,
@@ -71,7 +71,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '496e0ae9-fdf0-4465-b03e-61ffde12a777',
     title: 'Mans Search for Meaning',
     author: 'Viktor Frankl',
     img: MansSearchForMeaning,
@@ -87,7 +87,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'e61f96a6-e3f3-4302-ae5b-f537df38b7aa',
     title: 'The Archer',
     author: 'Paulo Coelho',
     img: TheArcher,
@@ -104,7 +104,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '1f7f6f91-f3a8-4ef5-a80d-efd5850b9ec1',
     title: 'The Great Train Journey',
     author: 'Ruskin Bond',
     img: TheGreatTrainJourney,
@@ -121,7 +121,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '2cc3348d-ac97-4300-b054-98f8289f0595',
     title: 'The Kite Runner',
     author: 'Khaled Hosseini',
     img: TheKiteRunner,
@@ -146,7 +146,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '3a3754d0-24f2-40bc-a1f6-f83a291f172e',
     title: 'Three Thousand Stitches',
     author: 'Sudha Murty',
     price: 199,
@@ -163,7 +163,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '83dfebb9-054c-467e-af23-8fed9cc3d8c8',
     title: 'The Little Prince',
     author: 'Antoine de Saint-Exupery ',
     price: 150,
@@ -181,7 +181,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '1772e3b4-e3d2-4730-8455-c617c9271da0',
     title: 'Home Body',
     author: 'Rupi Kaur',
     price: 699,
@@ -198,7 +198,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '6a24cd81-0257-42c3-b9bc-9ceaaa8e8a47',
     title: 'War And Peace',
     author: 'SLeo Tolstoy',
     price: 299,
@@ -238,7 +238,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'b80feeac-f542-44f2-ab56-91f87c3737c5',
     title: 'Landour Bazaar',
     author: 'Ruskin Bond',
     price: 199,
@@ -255,7 +255,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '1cfef06d-d486-47da-b109-0e83caedd2a3',
     title: 'Love Sonnets Of Ghalib',
     author: 'Ghalib',
     price: 2450,
@@ -272,7 +272,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'd1cf5443-86f1-4781-a10c-32cda84f3b26',
     title: 'Siddhartha',
     author: 'Hermmann Hesse',
     price: 379,
@@ -300,7 +300,7 @@ export const products = [
 
   //NON-FICTION
   {
-    _id: uuid(),
+    _id: '4ddb4950-ed1b-4a25-96a9-82ebebed52e2',
     title: 'My Journey',
     author: 'A.P.J Abdul Kalam',
     img: MyJourney,
@@ -338,7 +338,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'd9df11b6-8779-4c5b-8165-f39ba3533f17',
     title: 'ShoeDog',
     author: 'Knight Phil',
     img: ShoeDog,
@@ -356,7 +356,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '408262c6-b449-4ed8-a9c8-d13af5267c96',
     title: 'Why I Am An Atheist',
     author: 'Bhagat Singh',
     img: WhyIAmAnAtheist,
@@ -373,7 +373,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '7f522787-d8e3-49be-a355-304fc019c13f',
     title: 'Rajneeti',
     author: 'Gautam Chintamani ',
     img: Rajneeti,
@@ -390,7 +390,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'ffc156db-cb11-408a-9ec9-8c65a37d0eba',
     title: 'The Dhoni Touch',
     author: 'Bharat Sundaresan',
     img: TheDhoniTouch,
@@ -412,7 +412,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '9a09dbb1-da54-4923-95d7-6be4624b5477',
     title: 'The Diary Of A Young Girl',
     author: 'Anne Frank ',
     img: DiaryOfAYoungGirl,
@@ -429,7 +429,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '865664f3-edef-4f05-a0e3-11a97c2d10e5',
     title: "India's Struggle For Independence",
     author: 'Bipan Chandra',
     img: IndiasStruggleForIndependence,
@@ -449,7 +449,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '139f108e-dbd1-4f86-b49f-58ca438bd8b6',
     title: 'Karma',
     author: 'Sadhguru',
     img: Karma,
@@ -467,7 +467,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '2f97e084-afd5-4954-babb-2dffbd0d26a5',
     title: 'Seven Secrets Of Shiva',
     author: 'Devdutt Pattanaik',
     img: SevenSecretsOfShiva,
@@ -484,7 +484,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'e2381978-ad43-450f-91f3-97f5e7604029',
     title: "Rumi's Little Book Of Life",
     author: 'Rumi',
     img: RumisLittleBookOfLife,
@@ -496,13 +496,13 @@ export const products = [
     tag: 'bestseller',
     categoryName: ['non-fiction'],
     bookInfo: {
-      summary: `umi's Little Book of Life is a beautiful collection of 196 poems by Rumi, previously unavailable in English. Translated by native Persian speakers, Maryam Mafi and Azima Melita Kolin, this collection will appeal to Rumi lovers everywhere.
+      summary: `Rumi's Little Book of Life is a beautiful collection of 196 poems by Rumi, previously unavailable in English. Translated by native Persian speakers, Maryam Mafi and Azima Melita Kolin, this collection will appeal to Rumi lovers everywhere.
 
         This collection of mystical poetry focuses on one of life's core issues: coming to grips with the inner life. During the course of life, each of us is engaged on an inner journey. Rumi's Little Book of Life is a guidebook for that journey. The poetry is a companion for those who consciously enter the inner world to explore the gardens within--out of the everyday "world of dust"--through an ascending hierarchy that restores one's soul to the heart; the heart of the spirit; and in finding spirit, transcending all`,
     },
   },
   {
-    _id: uuid(),
+    _id: '54def3c1-ef46-4263-a4c8-bdbcc3ba5a34',
     title: 'My Gita',
     author: 'Devdutt Pattanaik',
     img: MyGita,
@@ -520,7 +520,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'd86691e2-8aaf-4b8e-a941-f7de29373507',
     title: 'Death',
     author: 'Sadhguru',
     img: Death,
@@ -539,7 +539,7 @@ export const products = [
 
   //SELF-HELP
   {
-    _id: uuid(),
+    _id: 'a158c1f8-9553-425d-9e93-f9e1ad2f7dad',
     title: 'Ikigai',
     author: 'Hector Gracia',
     img: Ikigai,
@@ -556,7 +556,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'cbc3cc17-c2be-406f-9ae4-c0a275f2bb9e',
     title: "Life's Amazing Secrets",
     author: 'Gaur Gopal Das',
     img: LifesAmazingSecrets,
@@ -576,7 +576,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '574ef120-f036-4d8f-aa72-5120cdcf0b9f',
     title: 'Star With Why',
     author: 'Simon Sinek',
     img: StarWithWhy,
@@ -600,7 +600,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '76a5b816-8a1e-48ed-b5d1-6b30b20408c6',
     title: 'The Power Of Your Subconsious Mind',
     author: 'Murphy Joseph',
     img: ThePowerOfYourSubconsiousMind,
@@ -617,7 +617,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '89813a31-1f3e-4d76-9db0-da833d3a8969',
     title: 'The Psycology Of Money',
     author: 'Morgan Housel',
     img: ThePsycologyOfMoney,
@@ -634,7 +634,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '27b86a7e-6107-42a3-bb91-f5a51ec45b20',
     title: 'Think And Grow Rich',
     author: 'Napoleon Hil',
     img: ThinkAndGrowRich,
@@ -651,7 +651,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '0e22603f-bb43-4d5d-b06e-b9f003bd49c8',
     title: 'Think Like A Monk',
     author: 'Jay Shetty',
     img: ThinkLikeAMonk,
@@ -668,7 +668,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'd03d6a14-d2b0-424f-9cd9-5d9208a00450',
     title: 'Beleive In Yourself',
     author: 'Joseph Murphy',
     img: BeleiveInYourself,
@@ -685,7 +685,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'a884c24c-d278-489e-8197-bc686eea4e27',
     title: 'Atomic Habits',
     author: 'James Clear',
     img: AtomicHabits,
@@ -701,7 +701,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '588aa9ad-2c29-4d9c-a82a-8c7f526717ce',
     title: 'Mindset',
     author: 'Dr Carol Dweck ',
     img: Mindset,
@@ -718,7 +718,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: '4141073f-491f-4275-b5dd-5c698470fa2a',
     title: 'Chanakya In DailyLife',
     author: 'Radhakrishnan Pillai',
     img: ChanakyaInDailyLife,
@@ -735,7 +735,7 @@ export const products = [
     },
   },
   {
-    _id: uuid(),
+    _id: 'afaafda1-d861-4792-b579-5751a8118f4f',
     title: 'Attached',
     author: 'Amir Levine',
     img: Attached,
