@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartItem } from '../../components';
+import { CartItem, Error } from '../../components';
 import {
   getTotalCartItem,
   getTotalCartMRP,
@@ -9,7 +9,7 @@ import {
 } from '../../utils';
 import './cart.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { addCartTotal } from '../../redux';
 
 const Cart = () => {
@@ -21,13 +21,17 @@ const Cart = () => {
     <>
       <div className='cart-page-container theme-background pb-5'>
         <p className='text-xxl text-centered color-primary py-4  theme-background'>
-          My Cart ({getTotalCartItem(cart)} Items)
+          My Cart ({getTotalCartItem(cart)}{' '}
+          {getTotalCartItem(cart) === 0 || getTotalCartItem(cart) === 1
+            ? 'Item'
+            : 'Items'}
+          )
         </p>
         <div className='cart-page'>
           {cart?.length > 0 ? (
             <>
               <main className='cart-container'>
-                {cart.map((cartItem) => (
+                {[...new Set(cart)].map((cartItem) => (
                   <CartItem cartItem={cartItem} key={cartItem._id} />
                 ))}
               </main>
@@ -67,9 +71,17 @@ const Cart = () => {
               </div>
             </>
           ) : (
-            <p className='text-centered mt-2 h1'>Cart Is Empty</p>
+            ''
           )}
         </div>
+        {cart?.length === 0 && (
+          <Error>
+            <p className=' mt-2 h2'>Cart Is Empty</p>
+            <Link to='/products'>
+              <button className='btn btn-primary'>Go To Products</button>
+            </Link>
+          </Error>
+        )}
       </div>
     </>
   );
