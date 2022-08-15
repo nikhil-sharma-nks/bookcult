@@ -39,7 +39,7 @@ const SingleProduct = () => {
         setIsLoading(true);
         const products = await getProducts();
         dispatch(loadProducts(products));
-        dispatch(addToCartStore([]));
+        // dispatch(addToCartStore([]));
         setIsProductInCart(false);
         setIsProductInWishlist(false);
         const foundProduct = products.find((item) => item._id === productId);
