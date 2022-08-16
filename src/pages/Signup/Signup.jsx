@@ -226,7 +226,7 @@ const Signup = () => {
               )}
 
               <div className='form-options-container mt-4'>
-                <div>
+                {/* <div>
                   <input
                     type='checkbox'
                     id='rememberMe'
@@ -236,7 +236,7 @@ const Signup = () => {
                   <label className='ml-1' htmlFor='rememberMe'>
                     I accept all terms and conditions
                   </label>
-                </div>
+                </div> */}
               </div>
               <button className='btn btn-primary mt-3' type='submit'>
                 Sign Up
